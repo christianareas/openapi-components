@@ -23,7 +23,7 @@ export default function parseOpenApiFile(pathToOpenApiFile: string) {
 	const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
 	const openApiData: any = load(openApiFile) // To-do: Improve the type definition, and add error handling (try/catch).
 	
-	// OpenAPI Info.
+	// OpenAPI Info data object.
 	const openApiInfoData: OpenApiInfoData = openApiData.info
 
 	return {

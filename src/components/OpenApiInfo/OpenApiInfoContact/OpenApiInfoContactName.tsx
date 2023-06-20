@@ -1,3 +1,6 @@
+// Dependencies.
+import React from "react"
+
 // OpenAPI Info › Contact › Name component’s type definition.
 type OpenApiInfoContactNameProps = {
 	name: string
