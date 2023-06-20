@@ -1,3 +1,4 @@
+// OpenAPI Info components.
 import OpenApiInfo from "./components/OpenApiInfo"
 import OpenApiInfoTitle from "./components/OpenApiInfo/OpenApiInfoTitle"
 import OpenApiInfoSummary from "./components/OpenApiInfo/OpenApiInfoSummary"

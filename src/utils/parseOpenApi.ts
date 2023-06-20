@@ -2,11 +2,6 @@
 import { readFileSync } from "fs"
 import { load } from "js-yaml"
 
-// Get the OpenAPI object.
-const pathToOpenApiFile = "../../../docs/spec/_versions/resume-api-0.1.1.yaml"
-const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
-const openApiData: any = load(openApiFile) // To-do: Update the object’s type.
-
 // OpenAPI Info data object’s type definition.
 type OpenApiInfoData = {
 	title: string
@@ -23,7 +18,15 @@ type OpenApiInfoData = {
 	version: string
 }
 
-// OpenAPI Info data object.
-export const openApiInfoData: OpenApiInfoData = openApiData.info
+// Parse the OpenAPI file.
+export default function parseOpenApiFile(pathToOpenApiFile: string) {
+	const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
+	const openApiData: any = load(openApiFile) // To-do: Improve the type definition, and add error handling (try/catch).
+	
+	// OpenAPI Info.
+	const openApiInfoData: OpenApiInfoData = openApiData.info
 
-export default openApiData
+	return {
+		openApiInfoData,
+	}
+}
