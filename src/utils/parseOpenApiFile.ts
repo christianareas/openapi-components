@@ -20,6 +20,7 @@ type OpenApiInfoData = {
 
 // Parse the OpenAPI file.
 export default function parseOpenApiFile(pathToOpenApiFile: string) {
+	console.log(`Path from the module: ${pathToOpenApiFile}`)
 	const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
 	const openApiData: any = load(openApiFile) // To-do: Improve the type definition, and add error handling (try/catch).
 	
