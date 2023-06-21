@@ -1,3 +1,6 @@
+// Dependencies.
+import React from "react"
+
 // OpenAPI Info › Contact component’s children.
 import OpenApiInfoContactName from "./OpenApiInfoContact/OpenApiInfoContactName"
 import OpenApiInfoContactEmail from "./OpenApiInfoContact/OpenApiInfoContactEmail"

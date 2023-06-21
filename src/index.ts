@@ -14,8 +14,9 @@ import OpenApiInfoLicenseName from "./components/OpenApiInfo/OpenApiInfoLicense/
 import OpenApiInfoLicenseIdentifier from "./components/OpenApiInfo/OpenApiInfoLicense/OpenApiInfoLicenseIdentifier"
 import OpenApiInfoVersion from "./components/OpenApiInfo/OpenApiInfoVersion"
 
+export default parseOpenApiFile
+
 export {
-	parseOpenApiFile,
 	OpenApiInfo,
 	OpenApiInfoTitle,
 	OpenApiInfoSummary,
