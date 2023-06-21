@@ -4,7 +4,9 @@
   "main": "./src/index.ts",
   "private": true,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "link": "npm link",
+    "unlink": "npm unlink -g"
   },
   "dependencies": {
     "@types/js-yaml": "^4.0.5",
@@ -14,5 +16,8 @@
     "js-yaml": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
   }
 }

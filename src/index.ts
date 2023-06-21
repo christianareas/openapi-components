@@ -1,4 +1,4 @@
-// Parse the OpenAPI file.
+// Parse the OpenAPI file function.
 import parseOpenApiFile from "./utils/parseOpenApiFile"
 
 // OpenAPI Info components.

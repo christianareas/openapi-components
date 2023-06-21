@@ -16,7 +16,7 @@ type OpenApiInfoContactProps = {
 // OpenAPI Info › Contact component.
 const OpenApiInfoContact: React.FC<OpenApiInfoContactProps> = ({ contact }) => (
 	<p>
-		Contact: <OpenApiInfoContactName name={contact.name} /> (<OpenApiInfoContactEmail email={contact.email} />)
+		Contact: <OpenApiInfoContactName /> (<OpenApiInfoContactEmail email={contact.email} />)
 	</p>
 )
 
