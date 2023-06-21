@@ -1,11 +1,9 @@
-// OpenAPI Info › Contact › Name component’s type definition.
-type OpenApiInfoContactNameProps = {
-	name: string
-}
+// Dependencies.
+import React from "react"
 
 // OpenAPI Info › Contact › Name component.
-const OpenApiInfoContactName: React.FC<OpenApiInfoContactNameProps> = ({ name }) => (
-	<span>{name}</span>
+const OpenApiInfoContactName: React.FC = () => (
+	<span>OpenApiInfoContactName</span>
 )
 
 export default OpenApiInfoContactName

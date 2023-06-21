@@ -1,12 +1,23 @@
 {
   "name": "openapi-components",
   "version": "0.1.0",
+  "main": "./src/index.ts",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "link": "npm link",
+    "unlink": "npm unlink -g"
+  },
   "dependencies": {
     "@types/js-yaml": "^4.0.5",
-    "js-yaml": "^4.1.0"
+    "@types/node": "^20.3.1",
+    "@types/react": "^18.2.13",
+    "@types/react-dom": "^18.2.6",
+    "js-yaml": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "ts-node": "^10.9.1"
   }
 }
