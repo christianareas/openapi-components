@@ -1,5 +1,5 @@
-// Parse the OpenAPI file function.
-import parseOpenApiFile from "./utils/parseOpenApiFile"
+// Parse the OpenAPI data function.
+import parseOpenApiData from "./utils/parseOpenApiData"
 
 // OpenAPI Info components.
 import OpenApiInfo from "./components/OpenApiInfo"
@@ -14,7 +14,7 @@ import OpenApiInfoLicenseName from "./components/OpenApiInfo/OpenApiInfoLicense/
 import OpenApiInfoLicenseIdentifier from "./components/OpenApiInfo/OpenApiInfoLicense/OpenApiInfoLicenseIdentifier"
 import OpenApiInfoVersion from "./components/OpenApiInfo/OpenApiInfoVersion"
 
-export default parseOpenApiFile
+export default parseOpenApiData
 
 export {
 	OpenApiInfo,
