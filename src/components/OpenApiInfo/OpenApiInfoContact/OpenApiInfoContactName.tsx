@@ -1,9 +1,19 @@
 // Dependencies.
 import React from "react"
+import { useOpenApiData } from "@openapi-components"
 
-// OpenAPI Info › Contact › Name component.
-const OpenApiInfoContactName: React.FC = () => (
-	<span>OpenApiInfoContactName</span>
-)
+// Component.
+export default function OpenApiInfoContactName() {
+	// Get the data.
+	const openApiData = useOpenApiData()
 
-export default OpenApiInfoContactName
+	// If null, return a loading message.
+	if (openApiData === null) {
+		return <span>Loading…</span>
+	}
+
+	// TSX.
+	return (
+		<span>{openApiData.contact.name}</span>
+	)
+}

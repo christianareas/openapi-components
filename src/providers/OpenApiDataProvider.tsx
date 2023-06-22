@@ -1,3 +1,5 @@
+"use client"
+
 // Dependencies.
 import React, { createContext, useState, useEffect, useContext } from "react"
 import parseOpenApiData, { OpenApiDataType } from "@openapi-components"
@@ -11,7 +13,7 @@ type OpenApiDataProviderProps = {
 // Context.
 const OpenApiDataContext = createContext<OpenApiDataType | null>(null)
 
-// OpenAPI data provider.
+// Provider.
 export default function OpenApiDataProvider({ pathToOpenApiFile, children }: OpenApiDataProviderProps) {
 	// Initialize the state.
 	const [openApiData, setOpenApiData] = useState<OpenApiDataType | null>(null)
@@ -32,3 +34,16 @@ export default function OpenApiDataProvider({ pathToOpenApiFile, children }: Ope
 	)
 }
 
+// Hook.
+export function useOpenApiData(): OpenApiDataType | null {
+	// Get the context.
+	const context = useContext(OpenApiDataContext)
+	
+	// If undefined, return an error.
+	if (context === undefined) {
+		throw new Error("useOpenApiData must be used within OpenApiDataProvider")
+	}
+
+	// Return the context.
+	return context
+}

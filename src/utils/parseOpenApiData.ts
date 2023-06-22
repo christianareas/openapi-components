@@ -24,9 +24,9 @@ export default function parseOpenApiData(pathToOpenApiFile: string) {
 	const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
 	const tempOpenApiData: any = load(openApiFile) // ** See below.
 	
-	// ** Temporary: Once type definition complete, update above’s type, and use it instead. **
+	// ** Temporary: Once type definition complete, consolidate with above. **
 	const openApiData: OpenApiDataType = tempOpenApiData.info
-	// ** Temporary: Once type definition complete, update above’s type, and use it instead. **
+	// ** Temporary: Once type definition complete, consolidate with above. **
 
 	return openApiData
 }

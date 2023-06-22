@@ -1,8 +1,8 @@
-// Functions.
-import parseOpenApiData from "./utils/parseOpenApiData"
+// Functions and types.
+import parseOpenApiData, { OpenApiDataType } from "./utils/parseOpenApiData"
 
-// Type definitions.
-import { OpenApiDataType } from "./utils/parseOpenApiData"
+// Providers and hooks.
+import OpenApiDataProvider, { useOpenApiData } from "./providers/OpenApiDataProvider"
 
 // Components.
 import OpenApiInfo from "./components/OpenApiInfo"
@@ -17,13 +17,10 @@ import OpenApiInfoLicenseName from "./components/OpenApiInfo/OpenApiInfoLicense/
 import OpenApiInfoLicenseIdentifier from "./components/OpenApiInfo/OpenApiInfoLicense/OpenApiInfoLicenseIdentifier"
 import OpenApiInfoVersion from "./components/OpenApiInfo/OpenApiInfoVersion"
 
-// Functions.
 export default parseOpenApiData
-
 export {
-	// Type definitions.
 	OpenApiDataType,
-	// Components.
+	OpenApiDataProvider, useOpenApiData,
 	OpenApiInfo,
 	OpenApiInfoTitle,
 	OpenApiInfoSummary,
