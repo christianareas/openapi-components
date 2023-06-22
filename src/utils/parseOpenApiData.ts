@@ -2,8 +2,8 @@
 import { readFileSync } from "fs"
 import { load } from "js-yaml"
 
-// OpenAPI Info data object’s type definition.
-type OpenApiInfoData = {
+// Type definitions.
+export type OpenApiDataType = {
 	title: string
 	summary: string
 	description: string
@@ -22,12 +22,11 @@ type OpenApiInfoData = {
 export default function parseOpenApiData(pathToOpenApiFile: string) {
 	// Get the OpenAPI file’s data.
 	const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
-	const openApiData: any = load(openApiFile)
+	const tempOpenApiData: any = load(openApiFile) // ** See below.
 	
-	// OpenAPI Info data object.
-	const openApiInfoData: OpenApiInfoData = openApiData.info
+	// ** Temporary: Once type definition complete, update above’s type, and use it instead. **
+	const openApiData: OpenApiDataType = tempOpenApiData.info
+	// ** Temporary: Once type definition complete, update above’s type, and use it instead. **
 
-	return {
-		openApiInfoData,
-	}
+	return openApiData
 }
