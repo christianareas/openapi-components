@@ -2,7 +2,7 @@
   "name": "openapi-components",
   "version": "0.1.0",
   "main": "./dist/index.js",
-  "types": "./types.d.ts",
+  "types": "./dist/index.d.ts",
   "private": true,
   "scripts": {
     "build": "tsc",

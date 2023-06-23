@@ -7,11 +7,11 @@
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"moduleResolution": "node",
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"declaration": true
 	},
 	"include": [
-		"src",
-		"types.d.ts"
+		"src"
 	],
 	"exclude": [
 		"node_modules"
