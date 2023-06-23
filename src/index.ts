@@ -1,5 +1,5 @@
 // Functions and types.
-import { parseOpenApiData, OpenApiDataType } from "./utils/parseOpenApiData"
+import parseOpenApiData, { OpenApiDataType } from "./utils/parseOpenApiData"
 
 // Providers and hooks.
 import OpenApiDataProvider, { useOpenApiData } from "./providers/OpenApiDataProvider"

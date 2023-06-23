@@ -19,7 +19,7 @@ export type OpenApiDataType = {
 }
 
 // Parse the OpenAPI data.
-export function parseOpenApiData(pathToOpenApiFile: string) {
+export default function parseOpenApiData(pathToOpenApiFile: string) {
 	// Get the OpenAPI file’s data.
 	const openApiFile = readFileSync(pathToOpenApiFile, "utf8")
 	const tempOpenApiData: any = load(openApiFile) // ** See below.

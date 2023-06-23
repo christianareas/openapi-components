@@ -1,6 +1,6 @@
 // Dependencies.
 import React, { createContext, useState, useEffect, useContext } from "react"
-import { parseOpenApiData, OpenApiDataType } from "../utils/parseOpenApiData"
+import parseOpenApiData, { OpenApiDataType } from "../utils/parseOpenApiData"
 
 // Type definitions.
 type OpenApiDataProviderProps = {
