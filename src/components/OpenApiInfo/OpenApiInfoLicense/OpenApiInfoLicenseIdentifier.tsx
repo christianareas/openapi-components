@@ -1,11 +1,19 @@
-// OpenAPI Info › License › Identifier component’s type definition.
-type OpenApiInfoLicenseIdentifierProps = {
-	identifier: string
+// Dependencies.
+import React from "react"
+import { useOpenApiData } from "../../../../src"
+
+// Component.
+export default function OpenApiInfoLicenseIdentifier() {
+	// Get the data.
+	const openApiData = useOpenApiData()
+
+	// If null, return a loading message.
+	if (openApiData === null) return <span>Loading…</span>
+
+	// TSX.
+	return (
+		<span>
+			{openApiData.license.identifier}
+		</span>
+	)
 }
-
-// OpenAPI Info › License › Identifier component.
-const OpenApiInfoLicenseIdentifier: React.FC<OpenApiInfoLicenseIdentifierProps> = ({ identifier }) => (
-	<span>{identifier}</span>
-)
-
-export default OpenApiInfoLicenseIdentifier

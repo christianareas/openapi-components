@@ -1,11 +1,19 @@
-// OpenAPI Info › Summary component’s type definition.
-type OpenApiInfoSummaryProps = {
-	summary: string
+// Dependencies.
+import React from "react"
+import { useOpenApiData } from "../../../src"
+
+// Component.
+export default function OpenApiInfoSummary() {
+	// Get the data.
+	const openApiData = useOpenApiData()
+
+	// If null, return a loading message.
+	if (openApiData === null) return <span>Loading…</span>
+
+	// TSX.
+	return (
+		<h2>
+			{openApiData.summary}
+		</h2>
+	)
 }
-
-// OpenAPI Info › Summary component.
-const OpenApiInfoSummary: React.FC<OpenApiInfoSummaryProps> = ({ summary }) => (
-	<h2>{summary}</h2>
-)
-
-export default OpenApiInfoSummary

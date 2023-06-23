@@ -1,16 +1,19 @@
 // Dependencies.
 import React from "react"
+import { useOpenApiData } from "../../../../src"
 
-// OpenAPI Info › Contact › Name component’s type definition.
-type OpenApiInfoContactEmailProps = {
-	email: string
+// Component.
+export default function OpenApiInfoContactEmail() {
+	// Get the data.
+	const openApiData = useOpenApiData()
+
+	// If null, return a loading message.
+	if (openApiData === null) return <span>Loading…</span>
+
+	// TSX.
+	return (
+		<span>
+			{openApiData.contact.email}
+		</span>
+	)
 }
-
-// OpenAPI Info › Contact › Email component.
-const OpenApiInfoContactEmail: React.FC<OpenApiInfoContactEmailProps> = ({ email }) => (
-	<span>
-		{email}
-	</span>
-)
-
-export default OpenApiInfoContactEmail
