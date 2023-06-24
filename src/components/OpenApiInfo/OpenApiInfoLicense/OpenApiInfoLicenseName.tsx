@@ -1,11 +1,19 @@
-// OpenAPI Info › License › Name component’s type definition.
-type OpenApiInfoLicenseNameProps = {
-	name: string
+// Dependencies.
+import React from "react"
+import { useOpenApiData } from "../../../providers/OpenApiDataProvider"
+
+// Component.
+export default function OpenApiInfoLicenseName() {
+	// Get the data.
+	const openApiData = useOpenApiData()
+
+	// If null, return a loading message.
+	if (openApiData === null) return <span>Loading…</span>
+
+	// TSX.
+	return (
+		<span>
+			{openApiData.license.name}
+		</span>
+	)
 }
-
-// OpenAPI Info › License › Name component.
-const OpenApiInfoLicenseName: React.FC<OpenApiInfoLicenseNameProps> = ({ name }) => (
-	<span>{name}</span>
-)
-
-export default OpenApiInfoLicenseName

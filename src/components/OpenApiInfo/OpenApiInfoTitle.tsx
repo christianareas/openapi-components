@@ -1,11 +1,19 @@
-// OpenAPI Info › Title component’s type definition.
-type OpenApiInfoTitleProps = {
-	title: string
+// Dependencies.
+import React from "react"
+import { useOpenApiData } from "../../providers/OpenApiDataProvider"
+
+// Component.
+export default function OpenApiInfoTitle() {
+	// Get the data.
+	const openApiData = useOpenApiData()
+
+	// If null, return a loading message.
+	if (openApiData === null) return <span>Loading…</span>
+
+	// TSX.
+	return (
+		<h1>
+			{openApiData.title}
+		</h1>
+	)
 }
-
-// OpenAPI Info › Title component.
-const OpenApiInfoTitle: React.FC<OpenApiInfoTitleProps> = ({ title }) => (
-	<h1>{title}</h1>
-)
-
-export default OpenApiInfoTitle

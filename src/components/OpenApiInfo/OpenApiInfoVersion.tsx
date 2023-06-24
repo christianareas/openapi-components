@@ -1,11 +1,19 @@
-// OpenAPI Info › Version component’s type definition.
-type OpenApiInfoVersionProps = {
-	version: string
+// Dependencies.
+import React from "react"
+import { useOpenApiData } from "../../providers/OpenApiDataProvider"
+
+// Component.
+export default function OpenApiInfoVersion() {
+	// Get the data.
+	const openApiData = useOpenApiData()
+
+	// If null, return a loading message.
+	if (openApiData === null) return <span>Loading…</span>
+
+	// TSX.
+	return (
+		<p>
+			Version: {openApiData.version}
+		</p>
+	)
 }
-
-// OpenAPI Info › Version component.
-const OpenApiInfoVersion: React.FC<OpenApiInfoVersionProps> = ({ version }) => (
-	<p>Version: {version}</p>
-)
-
-export default OpenApiInfoVersion

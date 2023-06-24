@@ -1,23 +1,16 @@
 // Dependencies.
 import React from "react"
 
-// OpenAPI Info › Contact component’s children.
+// Child components.
 import OpenApiInfoContactName from "./OpenApiInfoContact/OpenApiInfoContactName"
 import OpenApiInfoContactEmail from "./OpenApiInfoContact/OpenApiInfoContactEmail"
 
-// OpenAPI Info › Contact component’s type definition.
-type OpenApiInfoContactProps = {
-	contact: {
-		name: string
-		email: string
-	}
+// Component.
+export default function OpenApiInfoContact() {
+	// TSX.
+	return (
+		<p>
+			Contact: <OpenApiInfoContactName /> (<OpenApiInfoContactEmail />)
+		</p>
+	)
 }
-
-// OpenAPI Info › Contact component.
-const OpenApiInfoContact: React.FC<OpenApiInfoContactProps> = ({ contact }) => (
-	<p>
-		Contact: <OpenApiInfoContactName /> (<OpenApiInfoContactEmail email={contact.email} />)
-	</p>
-)
-
-export default OpenApiInfoContact
