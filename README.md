@@ -1,7 +1,9 @@
 # OpenAPI Components (`openapi-components`)
 *An NPM module that turns your OpenAPI file into React components.*
 
-You provide the OpenAPI file (YAML only, for now), it parses it and makes components available to you for every element of your spec.
+You provide the OpenAPI file (YAML only, for now), it give you a set of React components that you can use to build your own custom API documentation.
+
+Note: This is a work in progress. A beta release, more features, and more docs are on the way!
 
 ## Get Started
 
@@ -34,7 +36,3 @@ import { OpenApiInfoTitle } from "openapi-components"
 
 <OpenApiInfoTitle />
 ```
-
-## More To Come
-
-This is a work-in-progress. A beta release, more features, and more docs to come!
