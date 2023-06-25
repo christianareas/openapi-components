@@ -4,11 +4,11 @@
 		"module": "commonjs",
 		"jsx": "react",
 		"outDir": "./dist",
+		"declaration": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"declaration": true
+		"esModuleInterop": true
 	},
 	"include": [
 		"src"

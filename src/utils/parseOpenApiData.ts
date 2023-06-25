@@ -1,22 +1,6 @@
 // Dependencies.
-// import { readFileSync } from "fs"
 import { load } from "js-yaml"
-
-// Type definitions.
-export type OpenApiDataType = {
-	title: string
-	summary: string
-	description: string
-	contact: {
-		name: string
-		email: string
-	}
-	license: {
-		name: string
-		identifier: string
-	}
-	version: string
-}
+import { OpenApiDataType } from "../types"
 
 // Parse the OpenAPI data.
 export default async function parseOpenApiData(urlToOpenApiFile: string) {

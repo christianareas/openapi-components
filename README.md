@@ -3,7 +3,7 @@
 
 
 ## Install
-If you’d like to try `openapi-components` before it’s published, clone the repo (I use [GitHub CLI](https://cli.github.com)):
+If you’d like to try `openapi-components` before it’s published, clone the repo:
 
 ```bash
 gh repo clone christianareas/openapi-components
