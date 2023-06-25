@@ -1,9 +1,9 @@
 // Dependencies.
 import { load } from "js-yaml"
-import { OpenApiDataType } from "../types"
+import { OpenApiDataType } from "../"
 
 // Parse the OpenAPI data.
-export default async function parseOpenApiData(urlToOpenApiFile: string) {
+export async function parseOpenApiData(urlToOpenApiFile: string) {
 	try {
 		// Fetch.
 		const response = await fetch(urlToOpenApiFile)
@@ -21,7 +21,6 @@ export default async function parseOpenApiData(urlToOpenApiFile: string) {
 
 		return openApiData
 	} catch (error) {
-		// If there’s an error, log and throw it.
 		console.error(error)
 		throw error
 	}

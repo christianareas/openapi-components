@@ -12,3 +12,8 @@ export type OpenApiDataType = {
 	}
 	version: string
 }
+
+export type OpenApiDataProviderProps = {
+	urlToOpenApiFile: string
+	children: React.ReactNode
+}

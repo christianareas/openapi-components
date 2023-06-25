@@ -2,8 +2,9 @@
 import React from "react"
 
 // Child components.
-import OpenApiInfoContactName from "./OpenApiInfoContact/OpenApiInfoContactName"
-import OpenApiInfoContactEmail from "./OpenApiInfoContact/OpenApiInfoContactEmail"
+import {
+	OpenApiInfoContactName,
+	OpenApiInfoContactEmail } from "../../"
 
 // Component.
 export default function OpenApiInfoContact() {
