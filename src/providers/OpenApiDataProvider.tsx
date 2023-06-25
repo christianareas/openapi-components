@@ -1,7 +1,12 @@
 // Dependencies.
 import React, { createContext, useState, useEffect, useContext } from "react"
 import { parseOpenApiData } from "../utils/parseOpenApiData"
-import { OpenApiDataType, OpenApiDataProviderProps } from "../"
+import { OpenApiDataType } from ".."
+
+export type OpenApiDataProviderProps = {
+	urlToOpenApiFile: string
+	children: React.ReactNode
+}
 
 // Context.
 const OpenApiDataContext = createContext<OpenApiDataType | null>(null)

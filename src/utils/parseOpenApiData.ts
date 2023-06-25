@@ -16,7 +16,7 @@ export async function parseOpenApiData(urlToOpenApiFile: string) {
 		const tempOpenApiData: any = load(openApiFile) // ** See below.
 
 		// ** Temporary: Once type definition complete, consolidate with above. **
-		const openApiData: OpenApiDataType = tempOpenApiData.info
+		const openApiData: OpenApiDataType = tempOpenApiData
 		// ** Temporary: Once type definition complete, consolidate with above. **
 
 		return openApiData
