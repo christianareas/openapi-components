@@ -1,9 +1,6 @@
 // Types.
 import { OpenApiDataType, OpenApiDataProviderProps } from "./types"
 
-// Utils.
-import { parseOpenApiData } from "./utils/parseOpenApiData"
-
 // Providers and hooks.
 import { OpenApiDataProvider, useOpenApiData } from "./providers/OpenApiDataProvider"
 
@@ -22,7 +19,6 @@ import OpenApiInfoVersion from "./components/OpenApiInfo/OpenApiInfoVersion"
 
 export {
 	OpenApiDataType, OpenApiDataProviderProps,
-	parseOpenApiData,
 	OpenApiDataProvider, useOpenApiData,
 	OpenApiInfo,
 	OpenApiInfoTitle,
