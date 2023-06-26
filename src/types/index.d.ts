@@ -153,6 +153,7 @@ type Xml = {
 	wrapped?: boolean
 }
 
+// Parameter
 type Parameter = {
 	name: string
 	in: "query" | "header" | "path" | "cookie"
@@ -168,7 +169,6 @@ type Parameter = {
 	examples?: Map<Example | Reference>
 	content?: Map<MediaType>
 }
-
 
 // Request Body
 type RequestBody = {
@@ -228,13 +228,17 @@ type Header = {
 	allowEmptyValue?: boolean // NOT RECOMMENDED
 	style?: string
 	explode?: boolean
-	allowReserved?: boolean // **
+	allowReserved?: boolean
 	schema?: Schema | Reference
 	example?: any
 	examples?: Map<Example | Reference>
 	content?: Map<MediaType>
 }
 
+// Security Requirement
+type SecurityRequirement = {
+	[name: string]: string[]
+}
 
 // Security Scheme
 type SecurityScheme = {
@@ -274,8 +278,8 @@ type SecurityScheme = {
 type Link = {
 	operationRef?: string
 	operationId?: string
-	parameters?: Map<any> // add specifics
-	requestBody?: any // add specifics
+	parameters?: Map<any>
+	requestBody?: any
 	description?: string
 	server?: Server
 }
@@ -298,11 +302,6 @@ type Reference = {
 	$ref: string
 	summary?: string
 	description?: string
-}
-
-// Security Requirement
-type SecurityRequirement = {
-	[name: string]: string[]
 }
 
 // Tag
