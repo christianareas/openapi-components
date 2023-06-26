@@ -3,7 +3,7 @@ import { load } from "js-yaml"
 import { OpenApiDataType } from "../"
 
 // Parse the OpenAPI data.
-export async function parseOpenApiData(urlToOpenApiFile: string) {
+export async function parseOpenApiData(urlToOpenApiFile: string): Promise<OpenApiDataType> {
 	try {
 		// Fetch.
 		const response = await fetch(urlToOpenApiFile)
