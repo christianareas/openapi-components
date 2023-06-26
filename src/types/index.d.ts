@@ -7,7 +7,7 @@ export type OpenApiDataType = {
 	info: Info
 	servers?: Server[]
 	paths: Paths
-	webhooks?: Map<PathItem>
+	webhooks?: Map<PathItem> | Map<Reference>
 	components?: Components
 	security?: SecurityRequirement[]
 	tags?: Tag[]
@@ -68,7 +68,7 @@ type PathItem = {
 	patch?: Operation
 	trace?: Operation
 	servers?: Server[]
-	parameters?: Parameter[]
+	parameters?: Parameter[] | Reference[]
 }
 
 // Operation
@@ -78,10 +78,10 @@ type Operation = {
 	description?: string
 	externalDocs?: ExternalDocs
 	operationId?: string
-	parameters?: Parameter[]
-	requestBody?: RequestBody
+	parameters?: Parameter[] | Reference[]
+	requestBody?: RequestBody | Reference
 	responses: Responses
-	callbacks?: Map<Callback>
+	callbacks?: Map<Callback> | Map<Reference>
 	deprecated?: boolean
 	security?: SecurityRequirement[]
 	servers?: Server[]
@@ -90,15 +90,15 @@ type Operation = {
 // Components
 type Components = {
 	schemas?: Map<Schema>
-	responses?: Map<Response>
-	parameters?: Map<Parameter>
-	examples?: Map<Example>
-	requestBodies?: Map<RequestBody>
-	headers?: Map<Header>
-	securitySchemes?: Map<SecurityScheme>
-	links?: Map<Link>
-	callbacks?: Map<Callback>
-	pathItems?: Map<PathItem>
+	responses?: Map<Response> | Map<Reference>
+	parameters?: Map<Parameter> | Map<Reference>
+	examples?: Map<Example> | Map<Reference>
+	requestBodies?: Map<RequestBody> | Map<Reference>
+	headers?: Map<Header> | Map<Reference>
+	securitySchemes?: Map<SecurityScheme> | Map<Reference>
+	links?: Map<Link> | Map<Reference>
+	callbacks?: Map<Callback> | Map<Reference>
+	pathItems?: Map<PathItem> | Map<Reference>
 }
 
 // Schema
@@ -129,6 +129,7 @@ type Parameter = {
 	required?: boolean
 	deprecated?: boolean
 	allowEmptyValue?: boolean // NOT RECOMMENDED
+	// more to add!
 }
 
 // Request Body
@@ -141,13 +142,13 @@ type RequestBody = {
 type MediaType = {
 	schema?: Schema
 	example?: any
-	examples?: Map<Example>
+	examples?: Map<Example> | Map<Reference>
 	encoding?: Map<Encoding>
 }
 
 type Encoding = {
 	contentType?: string
-	headers?: Map<Header>
+	headers?: Map<Header> | Map<Reference>
 	style?: string
 	explode?: boolean
 	allowReserved?: boolean
@@ -162,9 +163,9 @@ type Responses = {
 
 type Response = {
 	description: string
-	headers?: Map<Header>
+	headers?: Map<Header> | Map<Reference>
 	content?: Map<MediaType>
-	links?: Map<Link>
+	links?: Map<Link> | Map<Reference>
 }
 
 // Based on the IANA Status Code Registry: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
@@ -236,7 +237,7 @@ type Link = {
 
 // Callback
 type Callback = {
-	[expression: string]: PathItem
+	[expression: string]: PathItem | Reference
 }
 
 // Example
