@@ -6,10 +6,13 @@
   "private": true,
   "scripts": {
     "build": "tsc",
+    "create-spectral-ruleset": "echo \"extends: ['spectral:oas']\" > ./src/utils/.spectral.yaml",
+    
     "update-ts": "npm i typescript@latest @types/js-yaml@latest @types/node@latest @types/react@latest @types/react-dom@latest",
     "update-react": "npm i react@latest react-dom@latest",
     "update-tools": "npm i @stoplight/spectral-cli@latest js-yaml@latest",
     "update-all": "npm run update-ts && npm run update-react && npm run update-tools",
+    
     "link": "npm link",
     "relink": "npm unlink -g && npm link",
     "unlink": "npm unlink -g"
