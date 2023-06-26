@@ -153,7 +153,6 @@ type Xml = {
 	wrapped?: boolean
 }
 
-// Parameter
 type Parameter = {
 	name: string
 	in: "query" | "header" | "path" | "cookie"
@@ -161,8 +160,15 @@ type Parameter = {
 	required?: boolean
 	deprecated?: boolean
 	allowEmptyValue?: boolean // NOT RECOMMENDED
-	// more to add!
+	style?: string
+	explode?: boolean
+	allowReserved?: boolean
+	schema?: Schema | Reference
+	example?: any
+	examples?: Map<Example | Reference>
+	content?: Map<MediaType>
 }
+
 
 // Request Body
 type RequestBody = {
@@ -215,14 +221,20 @@ type HttpStatusCodes =
 	| "500" | "501" | "502" | "503" | "504" | "505" | "506" | "507" | "508"
 	| "511"
 
-// Header
 type Header = {
 	description?: string
 	required?: boolean
 	deprecated?: boolean
 	allowEmptyValue?: boolean // NOT RECOMMENDED
-	// more to add!
+	style?: string
+	explode?: boolean
+	allowReserved?: boolean // **
+	schema?: Schema | Reference
+	example?: any
+	examples?: Map<Example | Reference>
+	content?: Map<MediaType>
 }
+
 
 // Security Scheme
 type SecurityScheme = {
