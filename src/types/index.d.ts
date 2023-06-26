@@ -49,7 +49,7 @@ type Server = {
 	}>
 }
 
-// Path
+// Paths
 type Paths = {
 	[path: string]: PathItem
 }
@@ -103,9 +103,41 @@ type Components = {
 
 // Schema
 type Schema = {
+	title?: string
+	multipleOf?: number
+	maximum?: number
+	exclusiveMaximum?: boolean
+	minimum?: number
+	exclusiveMinimum?: boolean
+	maxLength?: number
+	minLength?: number
+	pattern?: string
+	maxItems?: number
+	minItems?: number
+	uniqueItems?: boolean
+	maxProperties?: number
+	minProperties?: number
+	required?: string[]
+	enum?: string[] | number[]
+	type?: string
+	allOf?: (Schema | Reference)[]
+	oneOf?: (Schema | Reference)[]
+	anyOf?: (Schema | Reference)[]
+	not?: Schema | Reference
+	items?: Schema | Reference
+	properties?: Map<Schema | Reference>
+	additionalProperties?: Schema | Reference | boolean
+	description?: string
+	format?: "int32" | "int64" | "float" | "double" | "string" | "boolean" | "byte" | "binary" | "date" | "date-time" | "password"
+	default?: any
+	nullable?: boolean
 	discriminator?: Discriminator
+	readOnly?: boolean
+	writeOnly?: boolean
 	xml?: Xml
 	externalDocs?: ExternalDocs
+	example?: any
+	deprecated?: boolean
 }
 
 type Discriminator = {
@@ -154,7 +186,7 @@ type Encoding = {
 	allowReserved?: boolean
 }
 
-// Response
+// Responses
 type Responses = {
 	default?: Response | Reference
 } & {
@@ -189,6 +221,7 @@ type Header = {
 	required?: boolean
 	deprecated?: boolean
 	allowEmptyValue?: boolean // NOT RECOMMENDED
+	// more to add!
 }
 
 // Security Scheme
@@ -229,8 +262,8 @@ type SecurityScheme = {
 type Link = {
 	operationRef?: string
 	operationId?: string
-	parameters?: Map<any>
-	requestBody?: any
+	parameters?: Map<any> // add specifics
+	requestBody?: any // add specifics
 	description?: string
 	server?: Server
 }
