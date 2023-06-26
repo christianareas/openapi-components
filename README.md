@@ -68,7 +68,7 @@ cd path/to/your-project
 npm unlink openapi-components
 ```
 
-Change to the `openapi-components` directory, and unlink `openapi-components` from your local system:
+Change to the `openapi-components` directory and unlink `openapi-components` from your local system:
 
 ```bash
 cd path/to/openapi-components
@@ -79,7 +79,7 @@ npm unlink -g
 ## Roadmap
 
 ### Beta
-- Add type definitions for all OpenAPI data objects and properties.
+- ~~Add type definitions for all OpenAPI data objects and properties.~~
 - Add basic error handling.
 - Add all possible OpenAPI React components.
 - Refactor for a better developer experience (borrowing designs from [Radix](https://www.radix-ui.com)).
