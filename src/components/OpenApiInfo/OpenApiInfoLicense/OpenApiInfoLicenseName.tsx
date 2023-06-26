@@ -1,6 +1,6 @@
 // Dependencies.
 import React from "react"
-import { useOpenApiData } from "../../../providers/OpenApiDataProvider"
+import { useOpenApiData } from "../../../"
 
 // Component.
 export default function OpenApiInfoLicenseName() {

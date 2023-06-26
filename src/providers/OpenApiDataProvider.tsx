@@ -1,9 +1,9 @@
 // Dependencies.
 import React, { createContext, useState, useEffect, useContext } from "react"
-import parseOpenApiData, { OpenApiDataType } from "../utils/parseOpenApiData"
+import { parseOpenApiData } from "../utils/parseOpenApiData"
+import { OpenApiDataType } from ".."
 
-// Type definitions.
-type OpenApiDataProviderProps = {
+export type OpenApiDataProviderProps = {
 	urlToOpenApiFile: string
 	children: React.ReactNode
 }
@@ -12,27 +12,24 @@ type OpenApiDataProviderProps = {
 const OpenApiDataContext = createContext<OpenApiDataType | null>(null)
 
 // Provider.
-export default function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataProviderProps) {
+export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataProviderProps) {
 	// Initialize the state.
 	const [openApiData, setOpenApiData] = useState<OpenApiDataType | null>(null)
 
-	// Parse the OpenAPI data.
+	// Parse the OpenAPI file and set the state.
 	useEffect(() => {
 		async function fetchOpenApiFile() {
 			try {
-				// Parse and update the state.
 				const openApiData = await parseOpenApiData(urlToOpenApiFile)
 				setOpenApiData(openApiData)
 			} catch (error) {
-				// If there’s an error, log and throw it.
 				console.error(error)
 				throw error
 			}
 		}
-
 		fetchOpenApiFile()
 	}, [urlToOpenApiFile])
-
+	
 	// Return the provider.
 	return (
 		<OpenApiDataContext.Provider value={openApiData}>

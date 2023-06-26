@@ -2,8 +2,9 @@
 import React from "react"
 
 // Child components.
-import OpenApiInfoLicenseName from "./OpenApiInfoLicense/OpenApiInfoLicenseName"
-import OpenApiInfoLicenseIdentifier from "./OpenApiInfoLicense/OpenApiInfoLicenseIdentifier"
+import {
+	OpenApiInfoLicenseName,
+	OpenApiInfoLicenseIdentifier } from "../../"
 
 // Component.
 export default function OpenApiInfoLicense() {

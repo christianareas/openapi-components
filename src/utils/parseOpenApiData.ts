@@ -1,25 +1,9 @@
 // Dependencies.
-// import { readFileSync } from "fs"
 import { load } from "js-yaml"
-
-// Type definitions.
-export type OpenApiDataType = {
-	title: string
-	summary: string
-	description: string
-	contact: {
-		name: string
-		email: string
-	}
-	license: {
-		name: string
-		identifier: string
-	}
-	version: string
-}
+import { OpenApiDataType } from "../"
 
 // Parse the OpenAPI data.
-export default async function parseOpenApiData(urlToOpenApiFile: string) {
+export async function parseOpenApiData(urlToOpenApiFile: string): Promise<OpenApiDataType> {
 	try {
 		// Fetch.
 		const response = await fetch(urlToOpenApiFile)
@@ -32,12 +16,11 @@ export default async function parseOpenApiData(urlToOpenApiFile: string) {
 		const tempOpenApiData: any = load(openApiFile) // ** See below.
 
 		// ** Temporary: Once type definition complete, consolidate with above. **
-		const openApiData: OpenApiDataType = tempOpenApiData.info
+		const openApiData: OpenApiDataType = tempOpenApiData
 		// ** Temporary: Once type definition complete, consolidate with above. **
 
 		return openApiData
 	} catch (error) {
-		// If there’s an error, log and throw it.
 		console.error(error)
 		throw error
 	}
