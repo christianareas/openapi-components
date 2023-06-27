@@ -1,6 +1,6 @@
 //
-// OpenAPI 3.1.0 Type Definitions
-// Based on OAS 3.1: https://spec.openapis.org/oas/latest.html
+// OpenAPI 3.1.0 Type Definition.
+// Based on OAS 3.1: https://spec.openapis.org/oas/latest.html.
 //
 export type OpenApiDataType = {
 	openapi: string
@@ -14,12 +14,12 @@ export type OpenApiDataType = {
 	externalDocs?: ExternalDocs
 }
 
-// Helper
+// Helper.
 type Map<T> = {
 	[key: string]: T
 }
 
-// Info
+// Info Object: https://spec.openapis.org/oas/latest.html#info-object.
 type Info = {
 	title: string
 	summary?: string
@@ -38,7 +38,7 @@ type Info = {
 	version: string
 }
 
-// Server
+// Server Object: https://spec.openapis.org/oas/latest.html#server-object.
 type Server = {
 	url: string
 	description?: string
@@ -49,12 +49,12 @@ type Server = {
 	}>
 }
 
-// Paths
+// Paths Object: https://spec.openapis.org/oas/latest.html#paths-object.
 type Paths = {
 	[path: string]: PathItem
 }
 
-// Path Item
+// Path Item Object: https://spec.openapis.org/oas/latest.html#path-item-object.
 type PathItem = {
 	$ref?: string
 	summary?: string
@@ -71,7 +71,7 @@ type PathItem = {
 	parameters?: Parameter[] | Reference[]
 }
 
-// Operation
+// Operation Object: https://spec.openapis.org/oas/latest.html#operation-object.
 type Operation = {
 	tags?: string[]
 	summary?: string
@@ -87,7 +87,7 @@ type Operation = {
 	servers?: Server[]
 }
 
-// Components
+// Components Object: https://spec.openapis.org/oas/latest.html#components-object.
 type Components = {
 	schemas?: Map<Schema>
 	responses?: Map<Response> | Map<Reference>
@@ -101,7 +101,7 @@ type Components = {
 	pathItems?: Map<PathItem> | Map<Reference>
 }
 
-// Schema
+// Schema Object: https://spec.openapis.org/oas/latest.html#schema-object.
 type Schema = {
 	title?: string
 	multipleOf?: number
@@ -153,14 +153,14 @@ type Xml = {
 	wrapped?: boolean
 }
 
-// Parameter
+// Parameter Object: https://spec.openapis.org/oas/latest.html#parameter-object.
 type Parameter = {
 	name: string
 	in: "query" | "header" | "path" | "cookie"
 	description?: string
 	required?: boolean
 	deprecated?: boolean
-	allowEmptyValue?: boolean // NOT RECOMMENDED
+	allowEmptyValue?: boolean // Per OAS, NOT RECOMMENDED
 	style?: string
 	explode?: boolean
 	allowReserved?: boolean
@@ -170,7 +170,7 @@ type Parameter = {
 	content?: Map<MediaType>
 }
 
-// Request Body
+// Request Body Object: https://spec.openapis.org/oas/latest.html#request-body-object.
 type RequestBody = {
 	description?: string
 	content: Map<MediaType>
@@ -192,7 +192,7 @@ type Encoding = {
 	allowReserved?: boolean
 }
 
-// Responses
+// Responses Object: https://spec.openapis.org/oas/latest.html#responses-object.
 type Responses = {
 	default?: Response | Reference
 } & {
@@ -206,18 +206,23 @@ type Response = {
 	links?: Map<Link> | Map<Reference>
 }
 
-// Based on the IANA Status Code Registry: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-// via: https://spec.openapis.org/oas/latest.html#http-status-codes
+// HTTP Status Codes: https://spec.openapis.org/oas/latest.html#http-status-codes.
+// IANA Status Code Registry: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml.
 type HttpStatusCodes =
+	// Informational.
 	| "100" | "101" | "102" | "103"
+	// Successful.
 	| "200" | "201" | "202" | "203" | "204" | "205" | "206" | "207" | "208"
 	| "226"
+	// Redirection.
 	| "300" | "301" | "302" | "303" | "304" | "305" | "306" | "307" | "308"
+	// Client Error.
 	| "400" | "401" | "402" | "403" | "404" | "405" | "406" | "407" | "408" | "409"
 	| "410" | "411" | "412" | "413" | "414" | "415" | "416" | "417"
 	| "421" | "422" | "423" | "424" | "425" | "426" | "428" | "429"
 	| "431"
 	| "451"
+	// Server Error.
 	| "500" | "501" | "502" | "503" | "504" | "505" | "506" | "507" | "508"
 	| "511"
 
@@ -225,7 +230,7 @@ type Header = {
 	description?: string
 	required?: boolean
 	deprecated?: boolean
-	allowEmptyValue?: boolean // NOT RECOMMENDED
+	allowEmptyValue?: boolean // Per OAS, NOT RECOMMENDED
 	style?: string
 	explode?: boolean
 	allowReserved?: boolean
@@ -235,12 +240,12 @@ type Header = {
 	content?: Map<MediaType>
 }
 
-// Security Requirement
+// Security Requirement Object: https://spec.openapis.org/oas/latest.html#security-requirement-object.
 type SecurityRequirement = {
 	[name: string]: string[]
 }
 
-// Security Scheme
+// Security Scheme Object: https://spec.openapis.org/oas/latest.html#security-scheme-object.
 type SecurityScheme = {
 	type: "apiKey" | "http" | "mutualTLS" | "oauth2" | "openIdConnect"
 	description?: string
@@ -274,7 +279,7 @@ type SecurityScheme = {
 	openIdConnectUrl?: string
 }
 
-// Link
+// Link Object: https://spec.openapis.org/oas/latest.html#link-object.
 type Link = {
 	operationRef?: string
 	operationId?: string
@@ -284,12 +289,12 @@ type Link = {
 	server?: Server
 }
 
-// Callback
+// Callback Object: https://spec.openapis.org/oas/latest.html#callback-object.
 type Callback = {
 	[expression: string]: PathItem | Reference
 }
 
-// Example
+// Example Object: https://spec.openapis.org/oas/latest.html#example-object.
 type Example = {
 	summary?: string
 	description?: string
@@ -297,21 +302,21 @@ type Example = {
 	externalValue?: string
 }
 
-// Reference
+// Reference Object: https://spec.openapis.org/oas/latest.html#reference-object.
 type Reference = {
 	$ref: string
 	summary?: string
 	description?: string
 }
 
-// Tag
+// Tag Object: https://spec.openapis.org/oas/latest.html#tag-object.
 type Tag = {
 	name: string
 	description?: string
 	externalDocs?: ExternalDocs
 }
 
-// External Documentation
+// External Documentation Object: https://spec.openapis.org/oas/latest.html#external-documentation-object.
 type ExternalDocs = {
 	description?: string
 	url: string

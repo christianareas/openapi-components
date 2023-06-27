@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from "react"
 import { fetchAndPrepareOpenApiData } from "../utils/fetchAndPrepareOpenApiData"
 import { OpenApiDataType } from ".."
 
+// Type definition.
 export type OpenApiDataProviderProps = {
 	urlToOpenApiFile: string
 	children: React.ReactNode
@@ -16,7 +17,7 @@ export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataP
 	// Initialize the state.
 	const [openApiData, setOpenApiData] = useState<OpenApiDataType | null>(null)
 
-	// Parse the OpenAPI file and set the state.
+	// Fetch the OpenAPI file and set the state.
 	useEffect(() => {
 		async function fetchOpenApiFile() {
 			try {
