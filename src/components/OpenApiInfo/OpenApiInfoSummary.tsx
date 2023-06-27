@@ -13,7 +13,7 @@ export default function OpenApiInfoSummary() {
 	// TSX.
 	return (
 		<h2>
-			{openApiData.summary}
+			{openApiData.info.summary}
 		</h2>
 	)
 }

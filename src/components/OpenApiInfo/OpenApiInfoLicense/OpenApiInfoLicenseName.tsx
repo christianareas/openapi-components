@@ -13,7 +13,7 @@ export default function OpenApiInfoLicenseName() {
 	// TSX.
 	return (
 		<span>
-			{openApiData.license.name}
+			{openApiData.info.license?.name}
 		</span>
 	)
 }
