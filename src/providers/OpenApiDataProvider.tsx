@@ -1,6 +1,6 @@
 // Dependencies.
 import React, { createContext, useState, useEffect, useContext } from "react"
-import { parseOpenApiData } from "../utils/parseOpenApiData"
+import { fetchAndPrepareOpenApiData } from "../utils/fetchAndPrepareOpenApiData"
 import { OpenApiDataType } from ".."
 
 export type OpenApiDataProviderProps = {
@@ -20,7 +20,7 @@ export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataP
 	useEffect(() => {
 		async function fetchOpenApiFile() {
 			try {
-				const openApiData = await parseOpenApiData(urlToOpenApiFile)
+				const openApiData = await fetchAndPrepareOpenApiData(urlToOpenApiFile)
 				setOpenApiData(openApiData)
 			} catch (error) {
 				console.error(error)

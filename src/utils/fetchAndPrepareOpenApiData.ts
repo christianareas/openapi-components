@@ -1,9 +1,9 @@
 // Dependencies.
 import { load } from "js-yaml"
-import { OpenApiDataType } from "../"
+import { OpenApiDataType } from ".."
 
-// 
-export async function parseOpenApiData(urlToOpenApiFile: string): Promise<OpenApiDataType> {
+// Fetch, validate, and type the OpenAPI data.
+export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Promise<OpenApiDataType> {
 	try {
 		// Fetch the OpenAPI file.
 		const fetchResponse = await fetch(urlToOpenApiFile)
