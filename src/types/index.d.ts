@@ -188,6 +188,21 @@ type RequestBody = {
 	required?: boolean
 }
 
+// Header Object: https://spec.openapis.org/oas/latest.html#header-object.
+type Header = {
+	description?: string
+	required?: boolean
+	deprecated?: boolean
+	allowEmptyValue?: boolean // Per OAS, NOT RECOMMENDED
+	style?: string
+	explode?: boolean
+	allowReserved?: boolean
+	schema?: Schema | Reference
+	example?: any
+	examples?: Map<Example | Reference>
+	content?: Map<MediaType>
+}
+
 // Media Type Object: https://spec.openapis.org/oas/latest.html#media-type-object.
 type MediaType = {
 	schema?: Schema
@@ -239,21 +254,6 @@ type HttpStatusCodes =
 	// Server Error.
 	| "500" | "501" | "502" | "503" | "504" | "505" | "506" | "507" | "508"
 	| "511"
-
-// Header Object: https://spec.openapis.org/oas/latest.html#header-object.
-type Header = {
-	description?: string
-	required?: boolean
-	deprecated?: boolean
-	allowEmptyValue?: boolean // Per OAS, NOT RECOMMENDED
-	style?: string
-	explode?: boolean
-	allowReserved?: boolean
-	schema?: Schema | Reference
-	example?: any
-	examples?: Map<Example | Reference>
-	content?: Map<MediaType>
-}
 
 // Security Requirement Object: https://spec.openapis.org/oas/latest.html#security-requirement-object.
 type SecurityRequirement = {
