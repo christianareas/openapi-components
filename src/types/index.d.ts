@@ -1,6 +1,6 @@
 //
 // OpenAPI 3.1.0 Type Definition.
-// Based on OAS 3.1: https://spec.openapis.org/oas/latest.html.
+// Based on OAS 3.1.0: https://spec.openapis.org/oas/latest.html.
 //
 export type OpenApiDataType = {
 	openapi: string
@@ -25,28 +25,37 @@ type Info = {
 	summary?: string
 	description?: string
 	termsOfService?: string
-	contact?: {
-		name?: string
-		url?: string
-		email?: string
-	}
-	license?: {
-		name: string
-		identifier?: string
-		url?: string
-	}
+	contact?: Contact
+	license?: License
 	version: string
+}
+
+// Contact Object: https://spec.openapis.org/oas/latest.html#contact-object.
+type Contact = {
+	name?: string
+	url?: string
+	email?: string
+}
+
+// License Object: https://spec.openapis.org/oas/latest.html#license-object.
+type License = {
+	name: string
+	identifier?: string
+	url?: string
 }
 
 // Server Object: https://spec.openapis.org/oas/latest.html#server-object.
 type Server = {
 	url: string
 	description?: string
-	variables?: Map<{
-		enum?: string[]
-		default: string
-		description?: string
-	}>
+	variables?: Map<ServerVariable>
+}
+
+// Server Variable Object: https://spec.openapis.org/oas/latest.html#server-variable-object.
+type ServerVariable = {
+	enum?: string[]
+	default: string
+	description?: string
 }
 
 // Paths Object: https://spec.openapis.org/oas/latest.html#paths-object.
@@ -140,11 +149,13 @@ type Schema = {
 	deprecated?: boolean
 }
 
+// Discriminator Object: https://spec.openapis.org/oas/latest.html#discriminator-object.
 type Discriminator = {
 	propertyName: string
 	mapping?: Map<string>
 }
 
+// XML Object: https://spec.openapis.org/oas/latest.html#xml-object.
 type Xml = {
 	name?: string
 	namespace?: string
@@ -177,6 +188,7 @@ type RequestBody = {
 	required?: boolean
 }
 
+// Media Type Object: https://spec.openapis.org/oas/latest.html#media-type-object.
 type MediaType = {
 	schema?: Schema
 	example?: any
@@ -184,6 +196,7 @@ type MediaType = {
 	encoding?: Map<Encoding>
 }
 
+// Encoding Object: https://spec.openapis.org/oas/latest.html#encoding-object.
 type Encoding = {
 	contentType?: string
 	headers?: Map<Header> | Map<Reference>
@@ -199,6 +212,7 @@ type Responses = {
 	[httpStatusCode in HttpStatusCodes]?: Response | Reference
 }
 
+// Response Object: https://spec.openapis.org/oas/latest.html#response-object.
 type Response = {
 	description: string
 	headers?: Map<Header> | Map<Reference>
@@ -226,6 +240,7 @@ type HttpStatusCodes =
 	| "500" | "501" | "502" | "503" | "504" | "505" | "506" | "507" | "508"
 	| "511"
 
+// Header Object: https://spec.openapis.org/oas/latest.html#header-object.
 type Header = {
 	description?: string
 	required?: boolean
@@ -253,30 +268,24 @@ type SecurityScheme = {
 	in?: "query" | "header" | "cookie" // apiKey
 	scheme?: string // http
 	bearerFormat?: string // http
-	flows?: {
-		implicit?: {
-			authorizationUrl: string
-			refreshUrl?: string
-			scopes: Map<string>
-		}
-		password?: {
-			tokenUrl: string
-			refreshUrl?: string
-			scopes: Map<string>
-		}
-		clientCredentials?: {
-			tokenUrl: string
-			refreshUrl?: string
-			scopes: Map<string>
-		}
-		authorizationCode?: {
-			authorizationUrl: string
-			tokenUrl: string
-			refreshUrl?: string
-			scopes: Map<string>
-		}
-	}
-	openIdConnectUrl?: string
+	flows?: OAuthFlows // oauth2
+	openIdConnectUrl?: string // openIdConnect
+}
+
+// OAuth Flows Object: https://spec.openapis.org/oas/latest.html#oauth-flows-object.
+type OAuthFlows = {
+	implicit?: OAuthFlow
+	password?: OAuthFlow
+	clientCredentials?: OAuthFlow
+	authorizationCode?: OAuthFlow
+}
+
+// OAuth Flow Object: https://spec.openapis.org/oas/latest.html#oauth-flow-object.
+type OAuthFlow = {
+	authorizationUrl: string
+	tokenUrl: string
+	refreshUrl?: string
+	scopes: Map<string>
 }
 
 // Link Object: https://spec.openapis.org/oas/latest.html#link-object.
