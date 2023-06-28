@@ -25,14 +25,26 @@ export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Prom
 		}
 
 		// Validate the OAS version.
-		const validOasVersion = "3.1.0"
 		const oasVersion = unvalidatedOpenApiData.openapi
+		const validOasVersion = "3.1"
+		const semiValidOasVersion = "3.0"
+		const invalidOasVersion = "2"
+		const officialSupportMessage = `openapi-components officially supports OAS ${validOasVersion}.x or greater.`
+		const oasVersionMessage = `Your OAS version is ${oasVersion}.`
+		// If missing.
 		if (!oasVersion) {
-			throw new Error(`openapi-components only supports OAS ${validOasVersion}. Your openapi property is missing. Update your OpenAPI specification and try again.`)
-		} else if (oasVersion !== validOasVersion) {
-			throw new Error(`openapi-components only supports OAS ${validOasVersion}. Your OAS version is ${oasVersion}. Update your OpenAPI specification and try again.`)
+			throw new Error(`${officialSupportMessage} Your openapi property is missing. Update your OpenAPI specification and try again.`)
+		// If invalid (2.x).
+		} else if (oasVersion.startsWith(invalidOasVersion)) {
+			throw new Error(`${officialSupportMessage} ${oasVersionMessage} Unfortunately, openapi-components doesn’t support OAS 2.x. Consider updating your OpenAPI specification and try again.`)
+		// If semi-valid (3.0.x).
+		} else if (oasVersion.startsWith(semiValidOasVersion)) {
+			console.warn(`${officialSupportMessage} ${oasVersionMessage} You may experience issues. Consider updating your OpenAPI specification.`)
+		// Catch-all.
+		} else if (!oasVersion.startsWith(validOasVersion)) {
+			throw new Error(`${officialSupportMessage} ${oasVersionMessage} Update your OpenAPI specification and try again.`)
 		}
-
+		
 		// Type the OpenAPI data.
 		const openApiData: OpenApiDataType = unvalidatedOpenApiData
 		
