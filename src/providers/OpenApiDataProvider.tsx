@@ -17,7 +17,7 @@ type OpenApiDataProviderErrorBoundaryState = {
 }
 
 class OpenApiDataProviderErrorBoundary extends React.Component<OpenApiDataProviderErrorBoundaryProps, OpenApiDataProviderErrorBoundaryState> {
-	// Initialize the state.
+	// Initialize the states.
 	state: OpenApiDataProviderErrorBoundaryState = { hasError: false, error: null }
 
 	// Catch errors.
@@ -26,18 +26,16 @@ class OpenApiDataProviderErrorBoundary extends React.Component<OpenApiDataProvid
 		return { hasError: true, error }
 	}
 
-	// Render the error or the children.
+	// If there’s an error, render a fallback component. Else, render the children.
 	render() {
-		// If there’s an error, render a fallback component.
 		if (this.state.hasError) {
 			return (
 				<div>
-					<h1>OpenApiDataProvider Error</h1>
+					<h2>OpenApiDataProvider Error</h2>
 					<p>{this.state.error?.message}</p>
 				</div>
 			)
 		}
-		// Else, render the children.
 		return this.props.children
 	}
 }
@@ -49,15 +47,17 @@ type OpenApiDataProviderProps = {
 }
 
 export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataProviderProps) {
-	// Initialize the state.
+	// Initialize states.
 	const [openApiData, setOpenApiData] = useState<OpenApiDataType | null>(null)
+	const [loading, setLoading] = useState(true)
 
-	// Fetch the OpenAPI file and set the state.
+	// Fetch the OpenAPI file and set the states.
 	useEffect(() => {
 		async function fetchOpenApiFile() {
 			try {
 				const openApiData = await fetchAndPrepareOpenApiData(urlToOpenApiFile)
 				setOpenApiData(openApiData)
+				setLoading(false)
 			} catch (error) {
 				console.error(error)
 				throw error
@@ -70,7 +70,7 @@ export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataP
 	return (
 		<OpenApiDataContext.Provider value={openApiData}>
 			<OpenApiDataProviderErrorBoundary>
-				{children}
+				{loading ? <p>Loading…</p> : children}
 			</OpenApiDataProviderErrorBoundary>
 		</OpenApiDataContext.Provider>
 	)
@@ -83,7 +83,7 @@ export function useOpenApiData(): OpenApiDataType | null {
 	
 	// If undefined, return an error.
 	if (context === undefined) {
-		throw new Error("useOpenApiData must be used within OpenApiDataProvider")
+		throw new Error("You must use useOpenApiData() within the OpenApiDataProvider.")
 	}
 
 	// Return the context.
