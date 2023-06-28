@@ -1,18 +1,53 @@
 // Dependencies.
-import React, { createContext, useState, useEffect, useContext } from "react"
+import React, { ReactNode, createContext, useState, useEffect, useContext } from "react"
 import { fetchAndPrepareOpenApiData } from "../utils/fetchAndPrepareOpenApiData"
 import { OpenApiDataType } from ".."
-
-// Type definition.
-export type OpenApiDataProviderProps = {
-	urlToOpenApiFile: string
-	children: React.ReactNode
-}
 
 // Context.
 const OpenApiDataContext = createContext<OpenApiDataType | null>(null)
 
+// Error boundary.
+type OpenApiDataProviderErrorBoundaryProps = {
+	children: ReactNode
+}
+
+type OpenApiDataProviderErrorBoundaryState = {
+	hasError: boolean
+	error: Error | null
+}
+
+class OpenApiDataProviderErrorBoundary extends React.Component<OpenApiDataProviderErrorBoundaryProps, OpenApiDataProviderErrorBoundaryState> {
+	// Initialize the state.
+	state: OpenApiDataProviderErrorBoundaryState = { hasError: false, error: null }
+
+	// Catch errors.
+	static getDerivedStateFromError(error: Error) {
+		console.error(error)
+		return { hasError: true, error }
+	}
+
+	// Render the error or the children.
+	render() {
+		// If there’s an error, render a fallback component.
+		if (this.state.hasError) {
+			return (
+				<div>
+					<h1>OpenApiDataProvider Error</h1>
+					<p>{this.state.error?.message}</p>
+				</div>
+			)
+		}
+		// Else, render the children.
+		return this.props.children
+	}
+}
+
 // Provider.
+type OpenApiDataProviderProps = {
+	urlToOpenApiFile: string
+	children: ReactNode
+}
+
 export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataProviderProps) {
 	// Initialize the state.
 	const [openApiData, setOpenApiData] = useState<OpenApiDataType | null>(null)
@@ -34,7 +69,9 @@ export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataP
 	// Return the provider.
 	return (
 		<OpenApiDataContext.Provider value={openApiData}>
-			{children}
+			<OpenApiDataProviderErrorBoundary>
+				{children}
+			</OpenApiDataProviderErrorBoundary>
 		</OpenApiDataContext.Provider>
 	)
 }
