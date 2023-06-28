@@ -81,6 +81,9 @@ export default function OpenApiDoc() {
 }
 ```
 
+### Use the OpenAPI Components
+To-Do.
+
 
 ## Uninstall
 Change to your project’s directory and unlink it from `openapi-components`:
@@ -101,10 +104,14 @@ npm unlink -g
 ## Roadmap
 
 ### Beta
-- ~~Add type definitions for all OpenAPI data objects and properties.~~
+- ~~Add OpenAPI type definition (based on OAS 3.1).~~
 - ~~Add basic error handling.~~
-- Add all possible OpenAPI React components.
-- Refactor for a better developer experience (borrowing designs from [Radix](https://www.radix-ui.com)).
+- ~~Add OpenAPI data hook.~~
+- Add OpenAPI components (improve DevEx by borrowing design cues from [Radix](https://www.radix-ui.com)).
+- Add Docusaurus site for docs and publish to GitHub Pages.
+
 
 ### Future
+- Add JSON support.
+- Add OAS 3.0 support.
 - Themes, templates — or another way to give user’s a head start on their projects.
