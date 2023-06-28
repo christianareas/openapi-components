@@ -82,7 +82,7 @@ export function useOpenApiData(): OpenApiDataType | null {
 	const context = useContext(OpenApiDataContext)
 	
 	// If undefined, return an error.
-	if (context === undefined) {
+	if (context === undefined || context === null) {
 		throw new Error("You must use useOpenApiData() within the OpenApiDataProvider.")
 	}
 

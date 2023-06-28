@@ -33,30 +33,52 @@ npm link openapi-components
 
 ## Get Started
 
-### Set Up the OpenAPI Provider
-Import the OpenAPI provider, use it to wrap your app or the API docs portion of your app, and pass it the URL to your OpenAPI file (YAML only, for now):
+### Set Up the OpenAPI Data Provider
+Import `OpenApiDataProvider`, use it to wrap your app or the API docs portion of your app, and pass it the URL to your OpenAPI file (YAML only, for now):
 
 ```tsx
 import { OpenApiDataProvider } from "openapi-components"
+import OpenApiDoc from "../../components/OpenApiDoc"
 
 ...
 
-const urlToOpenApiFile = "https://raw.githubusercontent.com/christianareas/resume/main/docs/spec/_versions/resume-api-0.1.1.yaml"
+export default function DocsApiPage() {
+	// OpenAPI file.
+	const urlToOpenApiFile = "https://raw.githubusercontent.com/christianareas/resume/main/docs/spec/_versions/resume-api-0.1.1.yaml"
 
-<OpenApiDataProvider urlToOpenApiFile={urlToOpenApiFile}>
-	<App />
-</OpenApiDataProvider>
+	// TSX.
+	return (
+		<OpenApiDataProvider urlToOpenApiFile={urlToOpenApiFile}>
+			<OpenApiDoc />
+		</OpenApiDataProvider>
+	)
+}
 ```
 
-### Use the OpenAPI Components
-Import any of the available components and start building your API docs. All valid OpenAPI objects and properties are available as components. For example:
+### Use the OpenAPI Data Hook
+Import `useOpenApiData` and start building your API docs. All valid OpenAPI objects and properties you passed to `OpenApiDataProvider` are available. For example:
 
 ```tsx
-import { OpenApiInfoTitle } from "openapi-components"
+import { useOpenApiData } from "openapi-components"
 
 ...
 
-<OpenApiInfoTitle />
+export default function OpenApiDoc() {
+	// OpenAPI data.
+	const openApiData = useOpenApiData()
+
+	// TSX.
+	return (
+		<div>
+			<h1>
+				{openApiData.info.title}
+			</h1>
+			
+			...
+			
+		</div>
+	)
+}
 ```
 
 
