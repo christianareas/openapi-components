@@ -80,7 +80,7 @@ npm unlink -g
 
 ### Beta
 - ~~Add type definitions for all OpenAPI data objects and properties.~~
-- Add basic error handling.
+- ~~Add basic error handling.~~
 - Add all possible OpenAPI React components.
 - Refactor for a better developer experience (borrowing designs from [Radix](https://www.radix-ui.com)).
 
