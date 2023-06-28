@@ -13,7 +13,7 @@ export default function OpenApiInfoTitle() {
 	// TSX.
 	return (
 		<h1>
-			{openApiData.title}
+			{openApiData.info.title}
 		</h1>
 	)
 }

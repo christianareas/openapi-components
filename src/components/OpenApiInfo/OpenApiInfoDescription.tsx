@@ -13,7 +13,7 @@ export default function OpenApiInfoDescription() {
 	// TSX.
 	return (
 		<p>
-			{openApiData.description}
+			{openApiData.info.description}
 		</p>
 	)
 }

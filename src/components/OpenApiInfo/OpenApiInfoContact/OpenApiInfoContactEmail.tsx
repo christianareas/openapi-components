@@ -13,7 +13,7 @@ export default function OpenApiInfoContactEmail() {
 	// TSX.
 	return (
 		<span>
-			{openApiData.contact.email}
+			{openApiData.info.contact?.email}
 		</span>
 	)
 }

@@ -13,7 +13,7 @@ export default function OpenApiInfoVersion() {
 	// TSX.
 	return (
 		<p>
-			Version: {openApiData.version}
+			Version: {openApiData.info.version}
 		</p>
 	)
 }
