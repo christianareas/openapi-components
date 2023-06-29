@@ -56,7 +56,7 @@ export default function DocsApiPage() {
 ```
 
 ### Use the OpenAPI Data Hook
-Import `useOpenApiData` and start building your API docs. All valid OpenAPI objects and properties you passed to `OpenApiDataProvider` are available. For example:
+Import `useOpenApiData`, use it to save your OpenAPI data, and start building your API docs. All the valid OpenAPI objects and properties you passed to `OpenApiDataProvider` are available. For example:
 
 ```tsx
 import { useOpenApiData } from "openapi-components"
@@ -64,10 +64,8 @@ import { useOpenApiData } from "openapi-components"
 ...
 
 export default function OpenApiDoc() {
-	// OpenAPI data.
 	const openApiData = useOpenApiData()
 
-	// TSX.
 	return (
 		<div>
 			<h1>
@@ -79,6 +77,17 @@ export default function OpenApiDoc() {
 		</div>
 	)
 }
+```
+
+If you’d like to type your OpenAPI data, import `Oas_3_1_0_Type` and use it to type `openApiData`:
+
+```tsx
+import { useOpenApiData, Oas_3_1_0_Type } from "openapi-components"
+
+...
+
+export default function OpenApiDoc() {
+	const openApiData: Oas_3_1_0_Type = useOpenApiData()
 ```
 
 ### Use the OpenAPI Components
