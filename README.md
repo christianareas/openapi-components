@@ -1,6 +1,9 @@
 # OpenAPI Components
-`openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI file into React components. You provide a link to your OpenAPI file (YAML only, for now), it provides you with a set of React components you can use to build your own, custom API docs.
+`openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI file into React components. You provide a link to your OpenAPI file, it provides you with a set of React components you can use to build your own, custom API docs.
 
+This package officially supports OAS 3.1.x YAML files. You may be able to use it with OAS 3.0.x YAML files, though you might experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
+
+JSON-file support is on the roadmap. In the meantime, use something like [`js-yaml`](https://www.npmjs.com/package/js-yaml) to convert your files.
 
 ## Install
 If you’d like to try `openapi-components` before it’s published, clone the repo:
@@ -118,7 +121,7 @@ npm unlink -g
 - ~~Add OpenAPI data hook.~~
 - Add OpenAPI components (improve DevEx by borrowing design cues from [Radix](https://www.radix-ui.com)).
 - Add basic caching.
-- Add Docusaurus site for docs and publish to GitHub Pages.
+- Add a docs site (Docusaurus) and publish it to GitHub Pages.
 
 
 ### Future
