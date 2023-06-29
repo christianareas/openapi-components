@@ -1,9 +1,9 @@
 // Dependencies.
 import { load } from "js-yaml"
-import { OpenApiDataType } from ".."
+import { Oas_3_1_0_Type } from ".."
 
 // Fetch, validate, and type the OpenAPI data.
-export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Promise<OpenApiDataType> {
+export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Promise<Oas_3_1_0_Type> {
 	try {
 		// Fetch the OpenAPI file.
 		const fetchResponse = await fetch(urlToOpenApiFile)
@@ -46,7 +46,7 @@ export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Prom
 		}
 		
 		// Type the OpenAPI data.
-		const openApiData: OpenApiDataType = unvalidatedOpenApiData
+		const openApiData: Oas_3_1_0_Type = unvalidatedOpenApiData
 		
 		// Return the OpenAPI data.
 		return openApiData

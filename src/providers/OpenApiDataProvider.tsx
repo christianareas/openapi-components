@@ -1,10 +1,10 @@
 // Dependencies.
 import React, { ReactNode, createContext, useState, useEffect, useContext } from "react"
 import { fetchAndPrepareOpenApiData } from "../utils/fetchAndPrepareOpenApiData"
-import { OpenApiDataType } from ".."
+import { Oas_3_1_0_Type } from ".."
 
 // Context.
-const OpenApiDataContext = createContext<OpenApiDataType | null>(null)
+const OpenApiDataContext = createContext<Oas_3_1_0_Type | null>(null)
 
 // Error boundary.
 type OpenApiDataProviderErrorBoundaryProps = {
@@ -48,7 +48,7 @@ type OpenApiDataProviderProps = {
 
 export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataProviderProps) {
 	// Initialize states.
-	const [openApiData, setOpenApiData] = useState<OpenApiDataType | null>(null)
+	const [openApiData, setOpenApiData] = useState<Oas_3_1_0_Type | null>(null)
 	const [loading, setLoading] = useState(true)
 
 	// Fetch the OpenAPI file and set the states.
@@ -77,7 +77,7 @@ export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataP
 }
 
 // Hook.
-export function useOpenApiData(): OpenApiDataType | null {
+export function useOpenApiData(): Oas_3_1_0_Type | null {
 	// Get the context.
 	const context = useContext(OpenApiDataContext)
 	
