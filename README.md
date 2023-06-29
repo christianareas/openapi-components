@@ -117,6 +117,7 @@ npm unlink -g
 - ~~Add basic error handling.~~
 - ~~Add OpenAPI data hook.~~
 - Add OpenAPI components (improve DevEx by borrowing design cues from [Radix](https://www.radix-ui.com)).
+- Add basic caching.
 - Add Docusaurus site for docs and publish to GitHub Pages.
 
 
