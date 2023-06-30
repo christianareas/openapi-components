@@ -80,7 +80,7 @@ export default function OpenApiDoc() {
 }
 ```
 
-**TypeScript:**
+#### TypeScript
 If you’d like to type your OpenAPI data, import `Oas_3_1_0_Type` and use it to type `openApiData`:
 
 ```tsx
@@ -90,6 +90,8 @@ import { useOpenApiData, Oas_3_1_0_Type } from "openapi-components"
 
 export default function OpenApiDoc() {
 	const openApiData: Oas_3_1_0_Type = useOpenApiData()
+
+...
 ```
 
 ### Use the OpenAPI Components
@@ -125,5 +127,6 @@ npm unlink -g
 
 
 ### Future
+- Take references into account.
 - Add OAS 3.0 support.
 - Themes, templates — or another way to give user’s a head start on their projects.

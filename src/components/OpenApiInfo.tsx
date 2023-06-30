@@ -1,26 +1,21 @@
 // Dependencies.
-import React from "react"
+import React, { ReactNode } from "react"
 
 // Child components.
-import {
-	OpenApiInfoTitle,
-	OpenApiInfoSummary,
-	OpenApiInfoDescription,
-	OpenApiInfoContact,
-	OpenApiInfoLicense,
-	OpenApiInfoVersion } from "../"
+import Title from "./OpenApiInfo/Title"
 
 // Component.
-export default function OpenApiInfo() {
+type OpenApiInfoProps = {
+	children: ReactNode
+}
+
+export default function OpenApiInfo({ children }: OpenApiInfoProps) {
 	// TSX.
 	return (
-		<div>
-			<OpenApiInfoTitle />
-			<OpenApiInfoSummary />
-			<OpenApiInfoDescription />
-			<OpenApiInfoContact />
-			<OpenApiInfoLicense />
-			<OpenApiInfoVersion />
-		</div>
+		<section>
+			{children}
+		</section>
 	)
 }
+
+OpenApiInfo.Title = Title

@@ -10,7 +10,7 @@ export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Prom
 
 		// If the response is not OK, throw an error.
 		if (!fetchResponse.ok) {
-			throw new Error(`Couldn’t fetch your OpenAPI specification. Verify the file is at: ${urlToOpenApiFile}. Status: ${fetchResponse.status} ${fetchResponse.statusText}.`)
+			throw new Error(`Couldn’t fetch your OpenAPI specification. Verify the file is at ${urlToOpenApiFile} and try again. Status: ${fetchResponse.status} ${fetchResponse.statusText}.`)
 		}
 
 		// Save the OpenAPI file.

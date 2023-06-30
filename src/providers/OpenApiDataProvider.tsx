@@ -4,7 +4,18 @@ import { fetchAndPrepareOpenApiData } from "../utils/fetchAndPrepareOpenApiData"
 import { Oas_3_1_0_Type } from ".."
 
 // Context.
-const OpenApiDataContext = createContext<Oas_3_1_0_Type | null>(null)
+const OpenApiContext = createContext<Oas_3_1_0_Type | null>(null)
+
+// Hook.
+export function useOpenApiData(): Oas_3_1_0_Type | null {
+	// Get context.
+	const context = useContext(OpenApiContext)
+	// If there’s no context, throw an error.
+	if (context === null ) {
+		throw new Error("Couldn’t return the OpenAPI data. Verify you correctly set up the OpenApiDataProvider and try again.")
+	}
+	return context
+}
 
 // Error boundary.
 type OpenApiDataProviderErrorBoundaryProps = {
@@ -31,7 +42,7 @@ class OpenApiDataProviderErrorBoundary extends React.Component<OpenApiDataProvid
 		if (this.state.hasError) {
 			return (
 				<div>
-					<h2>OpenApiDataProvider Error</h2>
+					<strong>OpenApiDataProvider Error</strong>
 					<p>{this.state.error?.message}</p>
 				</div>
 			)
@@ -50,42 +61,37 @@ export function OpenApiDataProvider({ urlToOpenApiFile, children }: OpenApiDataP
 	// Initialize states.
 	const [openApiData, setOpenApiData] = useState<Oas_3_1_0_Type | null>(null)
 	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState<Error | null>(null)
 
-	// Fetch the OpenAPI file and set the states.
+	// Fetch and save the OpenAPI data, and set the states.
 	useEffect(() => {
-		async function fetchOpenApiFile() {
+		async function saveOpenApiData() {
 			try {
 				const openApiData = await fetchAndPrepareOpenApiData(urlToOpenApiFile)
-				setOpenApiData(openApiData)
+				setError(null)
 				setLoading(false)
+				setOpenApiData(openApiData)
 			} catch (error) {
 				console.error(error)
-				throw error
+				if (error instanceof Error) {
+					setError(error)
+					setLoading(false)
+				}
 			}
 		}
-		fetchOpenApiFile()
+		saveOpenApiData()
 	}, [urlToOpenApiFile])
 	
 	// Return the provider.
 	return (
-		<OpenApiDataContext.Provider value={openApiData}>
+		<OpenApiContext.Provider value={openApiData}>
 			<OpenApiDataProviderErrorBoundary>
-				{loading ? <p>Loading…</p> : children}
+				{
+					loading ? <p>Loading…</p> :
+					error ? <p>Error: {error.message}</p> :
+					children
+				}
 			</OpenApiDataProviderErrorBoundary>
-		</OpenApiDataContext.Provider>
+		</OpenApiContext.Provider>
 	)
-}
-
-// Hook.
-export function useOpenApiData(): Oas_3_1_0_Type | null {
-	// Get the context.
-	const context = useContext(OpenApiDataContext)
-	
-	// If undefined, return an error.
-	if (context === undefined || context === null) {
-		throw new Error("You must use useOpenApiData() within the OpenApiDataProvider.")
-	}
-
-	// Return the context.
-	return context
 }
