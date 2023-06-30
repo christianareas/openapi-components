@@ -3,6 +3,8 @@ import React, { ReactNode } from "react"
 
 // Child components.
 import Title from "./OpenApiInfo/Title"
+import Summary from "./OpenApiInfo/Summary"
+import Description from "./OpenApiInfo/Description"
 
 // Component.
 type OpenApiInfoProps = {
@@ -19,3 +21,5 @@ export default function OpenApiInfo({ children }: OpenApiInfoProps) {
 }
 
 OpenApiInfo.Title = Title
+OpenApiInfo.Summary = Summary
+OpenApiInfo.Description = Description
