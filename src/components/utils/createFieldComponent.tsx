@@ -5,35 +5,41 @@ import get from "lodash/get"
 
 // Template.
 type FieldComponentTemplateProps = {
-	pathToOpenApiField: string[]
-	htmlTag: string
+	label?: string
+	pathToOpenApiData: string[]
+	htmlWrapperElement: string
 	className?: string
 }
 
-function FieldComponentTemplate({ pathToOpenApiField, htmlTag, className }: FieldComponentTemplateProps) {
+function FieldComponentTemplate({ label, pathToOpenApiData, htmlWrapperElement, className }: FieldComponentTemplateProps) {
 	// Get the OpenAPI field data.
 	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
-	const openApiFieldData = get(openApiData, pathToOpenApiField)
+	const openApiFieldData = get(openApiData, pathToOpenApiData)
 
 	// If there’s no OpenAPI field data, return null.
 	if (!openApiFieldData) return null
 
 	// TSX.
 	return (
-		createElement(htmlTag, { className }, openApiFieldData)
+		<>
+			{label && <span>{label} </span>}
+			{createElement(htmlWrapperElement, { className }, openApiFieldData)}
+		</>
 	)
 }
 
 // Factory.
 type FieldComponentProps = {
+	label?: string
 	className?: string
 }
 
-export default function createFieldComponent(pathToOpenApiField: string[], htmlTag: string) {
-	const FieldComponent: FC<FieldComponentProps> = ({ className }) => (
+export default function createFieldComponent(pathToOpenApiData: string[], htmlTag: string) {
+	const FieldComponent: FC<FieldComponentProps> = ({ label, className }) => (
 		<FieldComponentTemplate
-			pathToOpenApiField={pathToOpenApiField}
-			htmlTag={htmlTag}
+			label={label}
+			pathToOpenApiData={pathToOpenApiData}
+			htmlWrapperElement={htmlTag}
 			className={className}
 		/>
 	)
