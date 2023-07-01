@@ -18,7 +18,7 @@ const License = createObjectComponent("p")
 const LicenseName = createFieldComponent(["info", "license", "name"], "span")
 const LicenseIdentifier = createFieldComponent(["info", "license", "identifier"], "span")
 const LicenseUrl = createFieldComponent(["info", "license", "url"], "a")
-const Version = createFieldComponent(["info", "version"], "span")
+const Version = createFieldComponent(["info", "version"], "p")
 
 // Attach the child components to their parent component.
 OpenApiInfo.Title = Title

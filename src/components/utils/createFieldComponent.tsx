@@ -26,14 +26,15 @@ function FieldComponentTemplate({ pathToOpenApiData, htmlWrapperElement, classNa
 
 // Factory.
 type FieldComponentProps = {
+	htmlWrapperElement?: string
 	className?: string
 }
 
-export default function createFieldComponent(pathToOpenApiData: string[], htmlTag: string) {
-	const FieldComponent: FC<FieldComponentProps> = ({ className }) => (
+export default function createFieldComponent(pathToOpenApiData: string[], defaultHtmlWrapperElement: string) {
+	const FieldComponent: FC<FieldComponentProps> = ({ htmlWrapperElement = defaultHtmlWrapperElement, className }) => (
 		<FieldComponentTemplate
 			pathToOpenApiData={pathToOpenApiData}
-			htmlWrapperElement={htmlTag}
+			htmlWrapperElement={htmlWrapperElement}
 			className={className}
 		/>
 	)

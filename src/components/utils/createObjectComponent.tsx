@@ -17,12 +17,13 @@ function ObjectComponentTemplate({ htmlWrapperElement, className, children }: Ob
 
 // Factory.
 type ObjectComponentProps = {
+	htmlWrapperElement?: string
 	className?: string
 	children: ReactNode
 }
 
-export default function createObjectComponent(htmlWrapperElement: string) {
-	const ObjectComponent: FC<ObjectComponentProps> & { [key: string]: any } = ({ className, children }) => (
+export default function createObjectComponent(defaultHtmlWrapperElement: string) {
+	const ObjectComponent: FC<ObjectComponentProps> & { [key: string]: any } = ({ htmlWrapperElement = defaultHtmlWrapperElement,className, children }) => (
 		<ObjectComponentTemplate
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
