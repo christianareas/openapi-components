@@ -12,9 +12,9 @@
   "private": true,
   "scripts": {
     "build": "tsc && ncp ./src/types ./dist/types",
-    "update-ts": "npm i typescript@latest @types/js-yaml@latest @types/node@latest @types/react@latest @types/react-dom@latest",
+    "update-ts": "npm i typescript@latest @types/js-yaml@latest @types/lodash@latest @types/node@latest @types/react@latest @types/react-dom@latest",
     "update-react": "npm i react@latest react-dom@latest",
-    "update-tools": "npm i js-yaml@latest && npm i ncp@latest",
+    "update-tools": "npm i js-yaml@latest lodash@latest ncp@latest",
     "update-all": "npm run update-ts && npm run update-react && npm run update-tools",
     "link": "npm link",
     "relink": "npm unlink -g && npm link",
@@ -22,11 +22,13 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.3.1",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",

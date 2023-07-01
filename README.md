@@ -57,7 +57,7 @@ export default function DocsApiPage() {
 ```
 
 ### Use the OpenAPI Data Hook
-Import `useOpenApiData`, use it to save your OpenAPI data, and start building your API docs. All the valid OpenAPI objects and properties you passed to `OpenApiDataProvider` are available. For example:
+Import `useOpenApiData`, use it to save your OpenAPI data, and start building your API docs. All the valid OpenAPI objects and fields you passed to `OpenApiDataProvider` are available. For example:
 
 ```tsx
 import { useOpenApiData } from "openapi-components"

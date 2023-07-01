@@ -1,6 +1,6 @@
 // Dependencies.
 import { load } from "js-yaml"
-import { Oas_3_1_0_Type } from ".."
+import { Oas_3_1_0_Type } from "../.."
 
 // Fetch, validate, and type the OpenAPI data.
 export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Promise<Oas_3_1_0_Type> {
@@ -33,7 +33,7 @@ export async function fetchAndPrepareOpenApiData(urlToOpenApiFile: string): Prom
 		const oasVersionMessage = `Your OAS version is ${oasVersion}.`
 		// If missing.
 		if (!oasVersion) {
-			throw new Error(`${officialSupportMessage} Your openapi property is missing. Update your OpenAPI specification and try again.`)
+			throw new Error(`${officialSupportMessage} Your openapi field is missing. Update your OpenAPI specification and try again.`)
 		// If invalid (2.x).
 		} else if (oasVersion.startsWith(invalidOasVersion)) {
 			throw new Error(`${officialSupportMessage} ${oasVersionMessage} Unfortunately, openapi-components doesn’t support OAS 2.x. Consider updating your OpenAPI specification and try again.`)

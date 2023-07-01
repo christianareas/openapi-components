@@ -1,6 +1,6 @@
 // Dependencies.
 import React, { ReactNode, createContext, useState, useEffect, useContext } from "react"
-import { fetchAndPrepareOpenApiData } from "../utils/fetchAndPrepareOpenApiData"
+import { fetchAndPrepareOpenApiData } from "./utils/fetchAndPrepareOpenApiData"
 import { Oas_3_1_0_Type } from ".."
 
 // Context.
