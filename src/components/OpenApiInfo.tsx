@@ -1,24 +1,24 @@
 // Dependencies.
-import createObjectComponent from "./utils/createObjectComponent"
-import createFieldComponent from "./utils/createFieldComponent"
+import createOpenApiObjectComponent from "./utils/createOpenApiObjectComponent"
+import createOpenApiFieldComponent from "./utils/createOpenApiFieldComponent"
 
 // Create parent component.
-const OpenApiInfo = createObjectComponent("section")
+const OpenApiInfo = createOpenApiObjectComponent("section")
 
 // Create child components.
-const Title = createFieldComponent(["info", "title"], "h1")
-const Summary = createFieldComponent(["info", "summary"], "h2")
-const Description = createFieldComponent(["info", "description"], "p")
-const TermsOfService = createFieldComponent(["info", "termsOfService"], "a")
-const Contact = createObjectComponent("p")
-const ContactName = createFieldComponent(["info", "contact", "name"], "span")
-const ContactUrl = createFieldComponent(["info", "contact", "url"], "a")
-const ContactEmail = createFieldComponent(["info", "contact", "email"], "a")
-const License = createObjectComponent("p")
-const LicenseName = createFieldComponent(["info", "license", "name"], "span")
-const LicenseIdentifier = createFieldComponent(["info", "license", "identifier"], "span")
-const LicenseUrl = createFieldComponent(["info", "license", "url"], "a")
-const Version = createFieldComponent(["info", "version"], "p")
+const Title = createOpenApiFieldComponent(["info", "title"], "h1")
+const Summary = createOpenApiFieldComponent(["info", "summary"], "h2")
+const Description = createOpenApiFieldComponent(["info", "description"], "p")
+const TermsOfService = createOpenApiFieldComponent(["info", "termsOfService"], "a")
+const Contact = createOpenApiObjectComponent("p")
+const ContactName = createOpenApiFieldComponent(["info", "contact", "name"], "span")
+const ContactUrl = createOpenApiFieldComponent(["info", "contact", "url"], "a")
+const ContactEmail = createOpenApiFieldComponent(["info", "contact", "email"], "a")
+const License = createOpenApiObjectComponent("p")
+const LicenseName = createOpenApiFieldComponent(["info", "license", "name"], "span")
+const LicenseIdentifier = createOpenApiFieldComponent(["info", "license", "identifier"], "span")
+const LicenseUrl = createOpenApiFieldComponent(["info", "license", "url"], "a")
+const Version = createOpenApiFieldComponent(["info", "version"], "p")
 
 // Attach the child components to their parent component.
 OpenApiInfo.Title = Title

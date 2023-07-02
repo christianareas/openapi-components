@@ -3,19 +3,20 @@ import React, { createElement, FC } from "react"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
 
-// Template.
-type FieldComponentTemplateProps = {
+// Component template type.
+type ComponentTemplateProps = {
 	pathToOpenApiData: string[]
 	htmlWrapperElement: string
 	className?: string
 }
 
-function FieldComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }: FieldComponentTemplateProps) {
-	// Get the OpenAPI field data.
+// Component template.
+function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }: ComponentTemplateProps) {
+	// Get the OpenAPI data.
 	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
 	const openApiFieldData = get(openApiData, pathToOpenApiData)
 
-	// If there’s no OpenAPI field data, return null.
+	// If there’s no OpenAPI data, return null.
 	if (!openApiFieldData) return null
 
 	// TSX.
@@ -24,20 +25,23 @@ function FieldComponentTemplate({ pathToOpenApiData, htmlWrapperElement, classNa
 	)
 }
 
-// Factory.
-type FieldComponentProps = {
+// Component type.
+type ComponentProps = {
 	htmlWrapperElement?: string
 	className?: string
 }
 
-export default function createFieldComponent(pathToOpenApiData: string[], defaultHtmlWrapperElement: string) {
-	const FieldComponent: FC<FieldComponentProps> = ({ htmlWrapperElement = defaultHtmlWrapperElement, className }) => (
-		<FieldComponentTemplate
+// Component factory.
+export default function createOpenApiFieldComponent(pathToOpenApiData: string[], defaultHtmlWrapperElement: string) {
+	// Create the component.
+	const Component: FC<ComponentProps> = ({ htmlWrapperElement = defaultHtmlWrapperElement, className }) => (
+		<ComponentTemplate
 			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
 		/>
 	)
-	
-	return FieldComponent
+
+	// Return the component.
+	return Component
 }
