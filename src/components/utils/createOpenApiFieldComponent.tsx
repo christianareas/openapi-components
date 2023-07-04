@@ -3,6 +3,11 @@ import React, { createElement, FC } from "react"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
 
+// Special fields.
+export const markdownFields = new Set(["info.description"])
+export const urlFields = new Set(["info.termOfService", "info.contact.url", "info.license.url"])
+export const emailFields = new Set(["info.contact.email"])
+
 // Component template type.
 type ComponentTemplateProps = {
 	pathToOpenApiData: string[]
@@ -18,6 +23,20 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 
 	// If there’s no OpenAPI data, return null.
 	if (!openApiFieldData) return null
+
+	// Identify special fields.
+	const isMarkdownField = markdownFields.has(pathToOpenApiData.join("."))
+	const isUrlField = urlFields.has(pathToOpenApiData.join("."))
+	const isEmailField = emailFields.has(pathToOpenApiData.join("."))
+
+	// If the field is Markdown, convert it to HTML.
+
+
+	// If the field is a URL, add a href="…" attribute.
+
+
+	// If the field is an email, add the href="mailto:…" attribute.
+
 
 	// TSX.
 	return (
