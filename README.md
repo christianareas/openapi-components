@@ -1,9 +1,10 @@
 # OpenAPI Components
-`openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI specification into React components. You provide a link to your OpenAPI file, it provides you with a React hook and set of React components you can use to build your own, custom API docs.
+`openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI specification into React components. You provide a link to your OpenAPI specification, it provides you with a React hook and a set of semantic, un-styled, compound React components. Use them to build your custom API documentation.
 
-This package officially supports OAS 3.1.x YAML files. You may be able to use it with OAS 3.0.x YAML files, but you’ll likely experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
+This package officially supports OAS 3.1.x YAML files with no references (`$ref`). You may be able to use it with OAS 3.0.x YAML files, but will likely experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
 
-JSON-file support is on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML.
+JSON-file and reference support are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [json-ref-resolver](https://github.com/stoplightio/json-ref-resolver) or [swagger-cli](https://github.com/APIDevTools/swagger-cli) to resolve your references.
+
 
 ## Install
 If you’d like to try `openapi-components` before it’s published, clone the repo:
@@ -37,9 +38,9 @@ npm link openapi-components
 ## Get Started
 
 ### Set Up the OpenAPI Data Provider
-The OpenAPI Data Provider gives the OpenAPI Data Hook and the OpenAPI Components access to the data from your OpenAPI specification. You **must** set this up before you can use the hook and the components.
+The OpenAPI data provider gives the OpenAPI data hook and OpenAPI components access to the data from your OpenAPI specification. You **must** set this up before you can use the hook or the components.
 
-To set it up, import `OpenApiDataProvider`, use it to wrap your app — or the API docs portion of your app —, and pass it the URL to your OpenAPI file (YAML only, for now):
+To set it up, import `OpenApiDataProvider`, use it to wrap your app or the API docs portion of your app, and pass it the URL to your OpenAPI file (YAML only, for now):
 
 ```tsx
 import { OpenApiDataProvider } from "openapi-components"
@@ -155,7 +156,7 @@ npm unlink -g
 - Add OpenAPI components.
 - Add a docs site (Docusaurus) and publish it to GitHub Pages.
 - Add JSON support.
-- Take references into account.
+- Add reference (`$ref`) support.
 
 
 ### Future
