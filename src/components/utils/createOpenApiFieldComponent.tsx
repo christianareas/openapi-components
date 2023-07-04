@@ -30,18 +30,20 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 	const isEmailField = emailFields.has(pathToOpenApiData.join("."))
 
 	// If the field is Markdown, convert it to HTML.
-
+	// if (isMarkdownField) {}
 
 	// If the field is a URL, add a href="…" attribute.
-
+	if (isUrlField && htmlWrapperElement === "a") {
+		return createElement(htmlWrapperElement, { className, href: openApiFieldData }, openApiFieldData)
+	}
 
 	// If the field is an email, add the href="mailto:…" attribute.
+	if (isEmailField && htmlWrapperElement === "a") {
+		return createElement(htmlWrapperElement, { className, href: `mailto:${openApiFieldData}` }, openApiFieldData)
+	}
 
-
-	// TSX.
-	return (
-		createElement(htmlWrapperElement, { className }, openApiFieldData)
-	)
+	// Else, return as-is.
+	return createElement(htmlWrapperElement, { className }, openApiFieldData)
 }
 
 // Component type.
