@@ -8,7 +8,7 @@ const OpenApiInfo = createOpenApiObjectComponent("section")
 // Create child components.
 const Title = createOpenApiFieldComponent(["info", "title"], "h1")
 const Summary = createOpenApiFieldComponent(["info", "summary"], "h2")
-const Description = createOpenApiFieldComponent(["info", "description"], "p")
+const Description = createOpenApiFieldComponent(["info", "description"], "section")
 const TermsOfService = createOpenApiFieldComponent(["info", "termsOfService"], "a")
 const Contact = createOpenApiObjectComponent("p")
 const ContactName = createOpenApiFieldComponent(["info", "contact", "name"], "span")
