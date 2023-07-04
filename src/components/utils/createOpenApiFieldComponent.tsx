@@ -9,7 +9,7 @@ export const markdownFields = new Set(["info.description"])
 export const urlFields = new Set(["info.termOfService", "info.contact.url", "info.license.url"])
 export const emailFields = new Set(["info.contact.email"])
 
-// Markdown parser.
+// Markdown parser and HTML renderer.
 const markdownParser = new Parser()
 const htmlRenderer = new HtmlRenderer()
 

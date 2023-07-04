@@ -1,9 +1,9 @@
 # OpenAPI Components
 `openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI specification into React components. You provide a link to your OpenAPI file, it provides you with a React hook and set of React components you can use to build your own, custom API docs.
 
-This package officially supports OAS 3.1.x YAML files. You may be able to use it with OAS 3.0.x YAML files, though you might experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
+This package officially supports OAS 3.1.x YAML files. You may be able to use it with OAS 3.0.x YAML files, but you’ll likely experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
 
-JSON-file support is on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) or similar to convert your file to YAML.
+JSON-file support is on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML.
 
 ## Install
 If you’d like to try `openapi-components` before it’s published, clone the repo:
@@ -37,7 +37,9 @@ npm link openapi-components
 ## Get Started
 
 ### Set Up the OpenAPI Data Provider
-Import `OpenApiDataProvider`, use it to wrap your app or the API docs portion of your app, and pass it the URL to your OpenAPI file (YAML only, for now):
+The OpenAPI Data Provider gives the OpenAPI Data Hook and the OpenAPI Components access to the data from your OpenAPI specification. You **must** set this up before you can use the hook and the components.
+
+To set it up, import `OpenApiDataProvider`, use it to wrap your app — or the API docs portion of your app —, and pass it the URL to your OpenAPI file (YAML only, for now):
 
 ```tsx
 import { OpenApiDataProvider } from "openapi-components"
@@ -57,7 +59,9 @@ export default function DocsApiPage() {
 ```
 
 ### Use the OpenAPI Data Hook
-Import `useOpenApiData`, use it to save your OpenAPI data, and start building your API docs. All the valid OpenAPI objects and fields you passed to `OpenApiDataProvider` are available. For example:
+The OpenAPI data hook gives you direct access to the data from your OpenAPI specification. The hook is great for those who want the most control over the elements of their OpenAPI specification.
+
+To get started, import `useOpenApiData`, use it to save your OpenAPI data, and start building your API documentation. All the OpenAPI objects and fields you passed to `OpenApiDataProvider` are available through the hook. For example:
 
 ```tsx
 import { useOpenApiData } from "openapi-components"
@@ -70,7 +74,7 @@ export default function OpenApiDoc() {
 	return (
 		<div>
 			<h1>
-				{openApiData.info.title}
+				{openApiData.info.title} (<span>{openApiData.info.version}</span>)
 			</h1>
 			
 			...
@@ -95,7 +99,35 @@ export default function OpenApiDoc() {
 ```
 
 ### Use the OpenAPI Components
-To-Do.
+The OpenAPI components give you access to a set of semantic, un-styled, compound components that are based on your OpenAPI specification. The components give you an easy way to customize your API documentation.
+
+To get started, import one of the available parent components, add its child components, and start building out your API documentation. You can style your components by passing `className`, and override a component’s HTML wrapper element by passing `htmlWrapperElement`. For example:
+
+
+```tsx
+import { OpenApiInfo } from "openapi-components"
+
+...
+
+export default function Info() {
+	return (
+		<OpenApiInfo>
+			<OpenApiInfo.Title className="text-3xl" />
+			<OpenApiInfo.Summary />
+			<OpenApiInfo.Description />
+			<OpenApiInfo.Contact>
+				<span>Contact:</span> <OpenApiInfo.Contact.Name /> (<OpenApiInfo.Contact.Email />)
+			</OpenApiInfo.Contact>
+			<OpenApiInfo.License>
+				<span>License:</span> <OpenApiInfo.License.Name /> (<OpenApiInfo.License.Identifier />)
+			</OpenApiInfo.License>
+			<p>
+				<span>Version:</span> <OpenApiInfo.Version htmlWrapperElement="span" />
+			</p>
+		</OpenApiInfo>
+	)
+}
+```
 
 
 ## Uninstall
@@ -120,13 +152,13 @@ npm unlink -g
 - ~~Add OpenAPI type definition (based on OAS 3.1).~~
 - ~~Add basic error handling.~~
 - ~~Add OpenAPI hook.~~
-- Add OpenAPI components (improve DevEx by borrowing design cues from [Radix](https://www.radix-ui.com)).
-- Add basic caching.
+- Add OpenAPI components.
 - Add a docs site (Docusaurus) and publish it to GitHub Pages.
 - Add JSON support.
+- Take references into account.
 
 
 ### Future
-- Take references into account.
+- Add basic caching.
 - Add OAS 3.0 support.
 - Themes, templates — or another way to give user’s a head start on their projects.
