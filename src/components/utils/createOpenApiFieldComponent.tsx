@@ -51,7 +51,7 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 		return createElement(htmlWrapperElement, { className, href: `mailto:${openApiFieldData}` }, openApiFieldData)
 	}
 
-	// Else, return as-is.
+	// Else, return the component template as-is.
 	return createElement(htmlWrapperElement, { className }, openApiFieldData)
 }
 

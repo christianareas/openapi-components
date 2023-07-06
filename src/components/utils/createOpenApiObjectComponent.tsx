@@ -10,7 +10,7 @@ type ComponentTemplateProps = {
 
 // Component template.
 function ComponentTemplate({ htmlWrapperElement, className, children }: ComponentTemplateProps) {
-	// TSX.
+	// Return the component template.
 	return (
 		createElement(htmlWrapperElement, { className }, children)
 	)

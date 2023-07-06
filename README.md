@@ -3,7 +3,7 @@
 
 This package officially supports OAS 3.1.x YAML files with no references (`$ref`). You may be able to use it with OAS 3.0.x YAML files, but will likely experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
 
-JSON-file and reference support are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [json-ref-resolver](https://github.com/stoplightio/json-ref-resolver) or [swagger-cli](https://github.com/APIDevTools/swagger-cli) to resolve your references.
+JSON-file and reference support are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [`json-ref-resolver`](https://github.com/stoplightio/json-ref-resolver) or [`swagger-cli`](https://github.com/APIDevTools/swagger-cli) to resolve your references.
 
 
 ## Install
