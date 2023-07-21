@@ -1,9 +1,11 @@
 # OpenAPI Components
 `openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI specification into React components. You provide a link to your OpenAPI specification, it provides you with a React hook and a set of semantic, un-styled, compound React components. Use them to build your custom API documentation.
 
-This package officially supports OAS 3.1.x YAML files with no references (`$ref`). You may be able to use it with OAS 3.0.x YAML files, but will likely experience issues. If you’d like to use this package, consider upgrading your OpenAPI specification.
-
-JSON-file and reference support are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [`json-ref-resolver`](https://github.com/stoplightio/json-ref-resolver) or [`swagger-cli`](https://github.com/APIDevTools/swagger-cli) to resolve your references.
+**Note:**
+- This package officially supports OAS 3.1.x YAML files with no references (`$ref`).
+- You may be able to use it with OAS 3.0.x YAML files, but will likely run into issues.
+- If you’d like to use this package, consider upgrading your OpenAPI specification to OAS 3.1.x.
+- JSON-file and reference support are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [`json-ref-resolver`](https://github.com/stoplightio/json-ref-resolver) or [`swagger-cli`](https://github.com/APIDevTools/swagger-cli) to resolve your references.
 
 
 ## Install
@@ -100,6 +102,8 @@ export default function OpenApiDoc() {
 ```
 
 ### Use the OpenAPI Components
+**Note:** Currently, `OpenApiInfo` is the only component available. Everything else is in development.
+
 The OpenAPI components give you access to a set of semantic, un-styled, compound components that are based on your OpenAPI specification. The components give you an easy way to customize your API documentation.
 
 To get started, import one of the available parent components, add its child components, and start building out your API documentation. You can style your components by passing `className`, and override a component’s HTML wrapper element by passing `htmlWrapperElement`. For example:
@@ -153,7 +157,15 @@ npm unlink -g
 - ~~Add OpenAPI type definition (based on OAS 3.1).~~
 - ~~Add basic error handling.~~
 - ~~Add OpenAPI hook.~~
-- Add OpenAPI components.
+- Add OpenAPI components:
+	- ~~Info~~
+	- Servers
+	- Paths
+	- Webhooks
+	- Components
+	- Security
+	- Tags
+	- External Documentation
 - Add a docs site (Docusaurus) and publish it to GitHub Pages.
 - Add JSON support.
 - Add reference (`$ref`) support.
