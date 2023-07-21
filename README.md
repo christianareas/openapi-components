@@ -1,12 +1,18 @@
 # OpenAPI Components
-`openapi-components` is a (soon-to-be published) NMP module that turns your OpenAPI specification into React components. You provide a link to your OpenAPI specification, it provides you with a React hook and set of semantic, headless React components. Use them to build your custom API documentation styled to your exact specifications.
+`openapi-components` is a (soon-to-be published) NPM module that turns your OpenAPI specification into React components. You provide a link to your OpenAPI specification, it provides you with a React hook and set of semantic, headless React components. Use them to build your custom API documentation — styled to your exact specifications.
 
 Note that this package officially supports OAS (OpenAPI Specification) 3.1.x. You may be able be able to use it with OAS 3.0.x files, but will likely run into issues. If you’d like to use this package, consider upgrading your OpenAPI specification to OAS 3.1.x.
 
-In addition, this package does not support JSON files (YAML only, for now) nor references (`$ref`). These features are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [`json-ref-resolver`](https://github.com/stoplightio/json-ref-resolver) or [`swagger-cli`](https://github.com/APIDevTools/swagger-cli) to resolve your references.
+This package does not support JSON files (YAML only, for now) nor references (`$ref`). These features are on the roadmap. In the meantime, use [`js-yaml`](https://www.npmjs.com/package/js-yaml) (or its equivalent) to convert your file to YAML, and [`json-ref-resolver`](https://github.com/stoplightio/json-ref-resolver) or [`swagger-cli`](https://github.com/APIDevTools/swagger-cli) to resolve your references.
 
 ![GNU GPLv3 License Badge](https://img.shields.io/github/license/christianareas/openapi-components)
 
+## Table of Contents
+- [Install](#install)
+- [Get Started](#get-started)
+- [Uninstall](#uninstall)
+- [Roadmap](#roadmap)
+- [License](#license)
 
 ## Install
 If you’d like to try `openapi-components` before it’s published, clone the repo:
