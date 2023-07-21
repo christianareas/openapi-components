@@ -1,34 +1,16 @@
 // Types.
-import { OpenApiDataType } from "./types"
+import { Oas_3_1_0_Type } from "./types"
 
 // Providers and hooks.
 import { OpenApiDataProvider, useOpenApiData } from "./providers/OpenApiDataProvider"
 
 // Components.
 import OpenApiInfo from "./components/OpenApiInfo"
-import OpenApiInfoTitle from "./components/OpenApiInfo/OpenApiInfoTitle"
-import OpenApiInfoSummary from "./components/OpenApiInfo/OpenApiInfoSummary"
-import OpenApiInfoDescription from "./components/OpenApiInfo/OpenApiInfoDescription"
-import OpenApiInfoContact from "./components/OpenApiInfo/OpenApiInfoContact"
-import OpenApiInfoContactName from "./components/OpenApiInfo/OpenApiInfoContact/OpenApiInfoContactName"
-import OpenApiInfoContactEmail from "./components/OpenApiInfo/OpenApiInfoContact/OpenApiInfoContactEmail"
-import OpenApiInfoLicense from "./components/OpenApiInfo/OpenApiInfoLicense"
-import OpenApiInfoLicenseName from "./components/OpenApiInfo/OpenApiInfoLicense/OpenApiInfoLicenseName"
-import OpenApiInfoLicenseIdentifier from "./components/OpenApiInfo/OpenApiInfoLicense/OpenApiInfoLicenseIdentifier"
-import OpenApiInfoVersion from "./components/OpenApiInfo/OpenApiInfoVersion"
+import OpenApiServers from "./components/OpenApiServers"
 
 export {
-	OpenApiDataType,
+	Oas_3_1_0_Type,
 	OpenApiDataProvider, useOpenApiData,
 	OpenApiInfo,
-	OpenApiInfoTitle,
-	OpenApiInfoSummary,
-	OpenApiInfoDescription,
-	OpenApiInfoContact,
-	OpenApiInfoContactName,
-	OpenApiInfoContactEmail,
-	OpenApiInfoLicense,
-	OpenApiInfoLicenseName,
-	OpenApiInfoLicenseIdentifier,
-	OpenApiInfoVersion,
+	OpenApiServers,
 }
