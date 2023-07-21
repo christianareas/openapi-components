@@ -1,18 +1,30 @@
 // Dependencies.
+import createOpenApiArrayOfComponents from "./utils/createOpenApiArrayOfComponent"
 import createOpenApiObjectComponent from "./utils/createOpenApiObjectComponent"
 import createOpenApiFieldComponent from "./utils/createOpenApiFieldComponent"
 
 // Create parent component.
-const OpenApiServers = createOpenApiObjectComponent("section")
+const Server = createOpenApiObjectComponent(
+	"section"
+)
+const OpenApiServers = createOpenApiArrayOfComponents(
+	["servers"],
+	"section",
+	Server
+)
 
 // Create child components.
-const Server = createOpenApiObjectComponent("section")
-const ServerUrl = createOpenApiFieldComponent(["servers", "url"], "p")
-const ServerDescription = createOpenApiFieldComponent(["servers", "description"], "p")
+const ServerUrl = createOpenApiFieldComponent(
+	["servers", "url"],
+	"p"
+)
+const ServerDescription = createOpenApiFieldComponent(
+	["servers", "description"],
+	"p"
+)
 
 // Attach the child components to their parent component.
-OpenApiServers.Server = Server
-OpenApiServers.Server.Url = ServerUrl
-OpenApiServers.Server.Description = ServerDescription
+Server.Url = ServerUrl
+Server.Description = ServerDescription
 
 export default OpenApiServers

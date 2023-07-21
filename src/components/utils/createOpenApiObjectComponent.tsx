@@ -1,23 +1,43 @@
 // Dependencies.
-import React, { createElement, FC, ReactNode } from "react"
+import React, { Children, cloneElement, createElement, isValidElement, FC, ReactNode } from "react"
+import { useOpenApiData, Oas_3_1_0_Type } from "../.."
+import get from "lodash/get"
 
 // Component template type.
 type ComponentTemplateProps = {
+	pathToOpenApiData: string[]
 	htmlWrapperElement: string
 	className?: string
 	children: ReactNode
 }
 
 // Component template.
-function ComponentTemplate({ htmlWrapperElement, className, children }: ComponentTemplateProps) {
+function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className, children }: ComponentTemplateProps) {
+	// Get the OpenAPI data.
+	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
+	const openApiObjectData = get(openApiData, pathToOpenApiData)
+
+	// If there’s no OpenAPI data, return null.
+	if (!openApiObjectData) return null
+
 	// Return the component template.
 	return (
-		createElement(htmlWrapperElement, { className }, children)
+		createElement(
+			htmlWrapperElement,
+			{ className },
+			Children.map(children, (child) => {
+				if (isValidElement(child)) {
+					return cloneElement(child, { openApiObjectData })
+				}
+				return child
+			})
+		)
 	)
 }
 
 // Component type.
 type ComponentProps = {
+	pathToOpenApiData: string[]
 	htmlWrapperElement?: string
 	className?: string
 	children: ReactNode
@@ -26,8 +46,9 @@ type ComponentProps = {
 // Component factory.
 export default function createOpenApiObjectComponent(defaultHtmlWrapperElement: string) {
 	// Create the component.
-	const Component: FC<ComponentProps> & { [key: string]: any } = ({ htmlWrapperElement = defaultHtmlWrapperElement, className, children }) => (
+	const Component: FC<ComponentProps> & { [key: string]: any } = ({ pathToOpenApiData, htmlWrapperElement = defaultHtmlWrapperElement, className, children }) => (
 		<ComponentTemplate
+			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
 		>

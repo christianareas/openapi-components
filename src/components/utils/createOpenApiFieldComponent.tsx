@@ -38,21 +38,36 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 	if (isMarkdownField) {
 		const parsedMarkdown = useMemo(() => markdownParser.parse(openApiFieldData), [openApiFieldData])
 		const renderedHtml = useMemo(() => htmlRenderer.render(parsedMarkdown), [parsedMarkdown])
-		return createElement(htmlWrapperElement, { className, dangerouslySetInnerHTML: { __html: renderedHtml } })
+		return createElement(
+			htmlWrapperElement,
+			{ className, dangerouslySetInnerHTML: { __html: renderedHtml } }
+		)
 	}
 
 	// If the field is a URL, add a href="…" attribute.
 	if (isUrlField && htmlWrapperElement === "a") {
-		return createElement(htmlWrapperElement, { className, href: openApiFieldData }, openApiFieldData)
+		return createElement(
+			htmlWrapperElement,
+			{ className, href: openApiFieldData },
+			openApiFieldData
+		)
 	}
 
 	// If the field is an email, add the href="mailto:…" attribute.
 	if (isEmailField && htmlWrapperElement === "a") {
-		return createElement(htmlWrapperElement, { className, href: `mailto:${openApiFieldData}` }, openApiFieldData)
+		return createElement(
+			htmlWrapperElement,
+			{ className, href: `mailto:${openApiFieldData}` },
+			openApiFieldData
+		)
 	}
 
 	// Else, return the component template as-is.
-	return createElement(htmlWrapperElement, { className }, openApiFieldData)
+	return createElement(
+		htmlWrapperElement,
+		{ className },
+		openApiFieldData
+	)
 }
 
 // Component type.

@@ -21,9 +21,16 @@ function ArrayOfComponentsTemplate({ pathToOpenApiData, htmlWrapperElement, clas
 	if (!openApiArrayData || !Array.isArray(openApiArrayData)) return null
 
 	// Return the array of components template.
-	return createElement(htmlWrapperElement, { className }, openApiArrayData.map((item, index) => (
-		<ChildComponent key={index} />
-	)))
+	return createElement(
+		htmlWrapperElement,
+		{ className },
+		openApiArrayData.map((item, index) => (
+			<ChildComponent
+				data={item}
+				key={index}
+			/>
+		)
+	))
 }
 
 // Array of components type.
