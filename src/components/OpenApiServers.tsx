@@ -1,5 +1,5 @@
 // Dependencies.
-import createOpenApiArrayOfComponents from "./utils/createOpenApiArrayOfComponent"
+import createOpenApiArrayOfComponents from "./utils/createOpenApiArrayOfComponents"
 import createOpenApiObjectComponent from "./utils/createOpenApiObjectComponent"
 import createOpenApiFieldComponent from "./utils/createOpenApiFieldComponent"
 
