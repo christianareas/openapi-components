@@ -1,5 +1,5 @@
 // Dependencies.
-import React, { createElement, FunctionComponent, useMemo } from "react"
+import React, { useMemo, createElement, FunctionComponent } from "react"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
 import { Parser, HtmlRenderer } from "commonmark"
@@ -41,7 +41,7 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 		return (
 			createElement(
 				htmlWrapperElement,
-				{ className, dangerouslySetInnerHTML: { __html: renderedHtml } }
+				{ className, dangerouslySetInnerHTML: { __html: renderedHtml } },
 			)
 		)
 	}
@@ -52,7 +52,7 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 			createElement(
 				htmlWrapperElement,
 				{ className, href: openApiFieldData },
-				openApiFieldData
+				openApiFieldData,
 			)
 		)
 	}
@@ -63,7 +63,7 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 			createElement(
 				htmlWrapperElement,
 				{ className, href: `mailto:${openApiFieldData}` },
-				openApiFieldData
+				openApiFieldData,
 			)
 		)
 	}
@@ -73,7 +73,7 @@ function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }:
 		createElement(
 			htmlWrapperElement,
 			{ className },
-			openApiFieldData
+			openApiFieldData,
 		)
 	)
 }
