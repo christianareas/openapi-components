@@ -1,5 +1,5 @@
 // Dependencies.
-import React, { createElement, FC } from "react"
+import React, { createElement, FunctionComponent } from "react"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
 
@@ -8,7 +8,7 @@ type ArrayOfComponentsTemplateProps = {
 	pathToOpenApiData: string[]
 	htmlWrapperElement: string
 	className?: string
-	ChildComponent: React.FC<any>
+	ChildComponent: FunctionComponent<any>
 }
 
 // Array of components template.
@@ -40,9 +40,9 @@ type ArrayOfComponentsProps = {
 }
 
 // Array of components factory.
-export default function createOpenApiArrayOfComponents(pathToOpenApiData: string[], defaultHtmlWrapperElement: string, ChildComponent: React.FC<any>) {
+export default function createOpenApiArrayOfComponents(pathToOpenApiData: string[], defaultHtmlWrapperElement: string, ChildComponent: FunctionComponent<any>) {
 	// Create the array of components.
-	const ArrayOfComponents: FC<ArrayOfComponentsProps> = ({ htmlWrapperElement = defaultHtmlWrapperElement, className }) => (
+	const ArrayOfComponents: FunctionComponent<ArrayOfComponentsProps> = ({ htmlWrapperElement = defaultHtmlWrapperElement, className }) => (
 		<ArrayOfComponentsTemplate
 			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}

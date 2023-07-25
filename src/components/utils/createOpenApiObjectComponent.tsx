@@ -1,5 +1,5 @@
 // Dependencies.
-import React, { Children, cloneElement, createElement, isValidElement, FC, ReactNode } from "react"
+import React, { Children, cloneElement, createElement, isValidElement, FunctionComponent, ReactNode } from "react"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
 
@@ -46,7 +46,7 @@ type ComponentProps = {
 // Component factory.
 export default function createOpenApiObjectComponent(defaultHtmlWrapperElement: string) {
 	// Create the component.
-	const Component: FC<ComponentProps> & { [key: string]: any } = ({ pathToOpenApiData, htmlWrapperElement = defaultHtmlWrapperElement, className, children }) => (
+	const Component: FunctionComponent<ComponentProps> & { [key: string]: any } = ({ pathToOpenApiData, htmlWrapperElement = defaultHtmlWrapperElement, className, children }) => (
 		<ComponentTemplate
 			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}
