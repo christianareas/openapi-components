@@ -12,7 +12,11 @@ type ComponentTemplateProps = {
 }
 
 // Component template.
-function ComponentTemplate({ pathToOpenApiData, htmlWrapperElement, className }: ComponentTemplateProps) {
+function ComponentTemplate({
+	pathToOpenApiData,
+	htmlWrapperElement,
+	className,
+}: ComponentTemplateProps) {
 	// Get the OpenAPI data.
 	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
 	const openApiFieldData = get(openApiData, pathToOpenApiData)
@@ -85,9 +89,15 @@ type ComponentProps = {
 }
 
 // Component factory.
-export default function createOpenApiFieldComponent(pathToOpenApiData: string[], defaultHtmlWrapperElement: string) {
+export default function createOpenApiFieldComponent(
+	pathToOpenApiData: string[],
+	defaultHtmlWrapperElement: string,
+) {
 	// Create the component.
-	const Component: FunctionComponent<ComponentProps> = ({ htmlWrapperElement = defaultHtmlWrapperElement, className }) => (
+	const Component: FunctionComponent<ComponentProps> = ({
+		htmlWrapperElement = defaultHtmlWrapperElement,
+		className,
+	}) => (
 		<ComponentTemplate
 			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}

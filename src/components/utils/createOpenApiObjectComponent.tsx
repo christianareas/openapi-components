@@ -5,11 +5,15 @@ import React, { createElement, ReactNode, FunctionComponent } from "react"
 type ComponentTemplateProps = {
 	htmlWrapperElement: string
 	className?: string
-	children: ReactNode
+	children?: ReactNode
 }
 
 // Component template.
-function ComponentTemplate({ htmlWrapperElement, className, children }: ComponentTemplateProps) {
+function ComponentTemplate({
+	htmlWrapperElement,
+	className,
+	children,
+}: ComponentTemplateProps) {
 	// Return the component template.
 	return (
 		createElement(
@@ -24,13 +28,19 @@ function ComponentTemplate({ htmlWrapperElement, className, children }: Componen
 type ComponentProps = {
 	htmlWrapperElement?: string
 	className?: string
-	children: ReactNode
+	children?: ReactNode
 }
 
 // Component factory.
-export default function createOpenApiObjectComponent(defaultHtmlWrapperElement: string) {
+export default function createOpenApiObjectComponent(
+	defaultHtmlWrapperElement: string,
+) {
 	// Create the component.
-	const Component: FunctionComponent<ComponentProps> & { [key: string]: any } = ({ htmlWrapperElement = defaultHtmlWrapperElement, className, children }) => (
+	const Component: FunctionComponent<ComponentProps> & { [key: string]: any } = ({
+		htmlWrapperElement = defaultHtmlWrapperElement,
+		className,
+		children,
+	}) => (
 		<ComponentTemplate
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
