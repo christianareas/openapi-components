@@ -2,7 +2,7 @@
 import React, { createElement, ReactNode, FunctionComponent } from "react"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
-import createOpenApiObjectComponent from "./createOpenApiObjectComponent"
+import createObjectComponent from "./createObjectComponent"
 
 // Array of components template type.
 type ArrayOfComponentsTemplateProps = {
@@ -51,10 +51,10 @@ type ArrayOfComponentsProps = {
 }
 
 // Array of components factory.
-export default function createOpenApiArrayOfObjectsComponent(
+export default function createArrayOfObjectsComponent(
 	pathToOpenApiData: string[],
 	defaultHtmlWrapperElement: string,
-	ChildComponent: ReturnType<typeof createOpenApiObjectComponent>,
+	ChildComponent: ReturnType<typeof createObjectComponent>,
 ) {
 	// Create the array of components.
 	const ArrayOfComponents: FunctionComponent<ArrayOfComponentsProps> = ({

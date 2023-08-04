@@ -89,7 +89,7 @@ type ComponentProps = {
 }
 
 // Component factory.
-export default function createOpenApiFieldComponent(
+export default function createFieldComponent(
 	pathToOpenApiData: string[],
 	defaultHtmlWrapperElement: string,
 ) {

@@ -32,7 +32,7 @@ type ComponentProps = {
 }
 
 // Component factory.
-export default function createOpenApiObjectComponent(
+export default function createObjectComponent(
 	defaultHtmlWrapperElement: string,
 ) {
 	// Create the component.
