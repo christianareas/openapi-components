@@ -5,22 +5,22 @@ import get from "lodash/get"
 import createObjectComponent from "./createObjectComponent"
 
 // Array of components template type.
-type ArrayOfComponentsTemplateProps = {
+type ArrayOfObjectsComponentTemplateProps = {
 	pathToOpenApiData: string[]
 	htmlWrapperElement: string
 	className?: string
-	ChildComponent: FunctionComponent<any> // Update this type to match other code.
+	ChildComponent: FunctionComponent<any> // Todo: Update this type to something more specific.
 	children?: ReactNode
 }
 
 // Array of components template.
-function ArrayOfComponentsTemplate({
+function ArrayOfObjectsComponentTemplate({
 	pathToOpenApiData,
 	htmlWrapperElement,
 	className,
 	ChildComponent,
 	children
-}: ArrayOfComponentsTemplateProps) {
+}: ArrayOfObjectsComponentTemplateProps) {
 	// Get the OpenAPI data.
 	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
 	const openApiArrayOfObjectsData = get(openApiData, pathToOpenApiData)
@@ -44,7 +44,7 @@ function ArrayOfComponentsTemplate({
 }
 
 // Array of components type.
-type ArrayOfComponentsProps = {
+type ArrayOfObjectsComponentProps = {
 	htmlWrapperElement?: string
 	className?: string
 	children?: ReactNode
@@ -57,21 +57,21 @@ export default function createArrayOfObjectsComponent(
 	ChildComponent: ReturnType<typeof createObjectComponent>,
 ) {
 	// Create the array of components.
-	const ArrayOfComponents: FunctionComponent<ArrayOfComponentsProps> = ({
+	const ArrayOfObjectsComponent: FunctionComponent<ArrayOfObjectsComponentProps> = ({
 		htmlWrapperElement = defaultHtmlWrapperElement,
 		className,
 		children,
 }) => (
-		<ArrayOfComponentsTemplate
+		<ArrayOfObjectsComponentTemplate
 			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
 			ChildComponent={ChildComponent}
 		>
 			{children}
-		</ArrayOfComponentsTemplate>
+		</ArrayOfObjectsComponentTemplate>
 	)
 
 	// Return the component.
-	return ArrayOfComponents
+	return ArrayOfObjectsComponent
 }

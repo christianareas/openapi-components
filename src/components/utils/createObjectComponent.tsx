@@ -1,34 +1,49 @@
 // Dependencies.
-import React, { createElement, ReactNode, FunctionComponent } from "react"
+import React, { createElement, ReactNode, FunctionComponent, createContext } from "react"
+
+// Context.
+const ObjectContext = createContext<any>(null) // Todo: Update this type to something more specific.
 
 // Component template type.
-type ComponentTemplateProps = {
+type ObjectComponentTemplateProps = {
 	htmlWrapperElement: string
 	className?: string
 	children?: ReactNode
+	data?: any // Todo: Update this type to something more specific.
 }
 
 // Component template.
-function ComponentTemplate({
+function ObjectComponentTemplate({
 	htmlWrapperElement,
 	className,
 	children,
-}: ComponentTemplateProps) {
+	data,
+}: ObjectComponentTemplateProps) {
+	//
+	const childrenWithProvidedData = (
+		<ObjectContext.Provider
+			value={data}
+		>
+			{children}
+		</ObjectContext.Provider>
+	)
+
 	// Return the component template.
 	return (
 		createElement(
 			htmlWrapperElement,
 			{ className },
-			children,
+			childrenWithProvidedData,
 		)
 	)
 }
 
 // Component type.
-type ComponentProps = {
+type ObjectComponentProps = {
 	htmlWrapperElement?: string
 	className?: string
 	children?: ReactNode
+	data?: any // Todo: Update this type to something more specific.
 }
 
 // Component factory.
@@ -36,19 +51,20 @@ export default function createObjectComponent(
 	defaultHtmlWrapperElement: string,
 ) {
 	// Create the component.
-	const Component: FunctionComponent<ComponentProps> & { [key: string]: any } = ({
+	const ObjectComponent: FunctionComponent<ObjectComponentProps> & { [key: string]: any } = ({ // Todo: Update this type to something more specific.
 		htmlWrapperElement = defaultHtmlWrapperElement,
 		className,
 		children,
+		data,
 	}) => (
-		<ComponentTemplate
+		<ObjectComponentTemplate
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
-		>
-			{children}
-		</ComponentTemplate>
+			children={children}
+			data={data}
+		/>
 	)
 	
 	// Return the component.
-	return Component
+	return ObjectComponent
 }

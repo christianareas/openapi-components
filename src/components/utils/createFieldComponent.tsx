@@ -5,18 +5,18 @@ import get from "lodash/get"
 import { Parser, HtmlRenderer } from "commonmark"
 
 // Component template type.
-type ComponentTemplateProps = {
+type FieldComponentTemplateProps = {
 	pathToOpenApiData: string[]
 	htmlWrapperElement: string
 	className?: string
 }
 
 // Component template.
-function ComponentTemplate({
+function FieldComponentTemplate({
 	pathToOpenApiData,
 	htmlWrapperElement,
 	className,
-}: ComponentTemplateProps) {
+}: FieldComponentTemplateProps) {
 	// Get the OpenAPI data.
 	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
 	const openApiFieldData = get(openApiData, pathToOpenApiData)
@@ -83,7 +83,7 @@ function ComponentTemplate({
 }
 
 // Component type.
-type ComponentProps = {
+type FieldComponentProps = {
 	htmlWrapperElement?: string
 	className?: string
 }
@@ -94,11 +94,11 @@ export default function createFieldComponent(
 	defaultHtmlWrapperElement: string,
 ) {
 	// Create the component.
-	const Component: FunctionComponent<ComponentProps> = ({
+	const FieldComponent: FunctionComponent<FieldComponentProps> = ({
 		htmlWrapperElement = defaultHtmlWrapperElement,
 		className,
 	}) => (
-		<ComponentTemplate
+		<FieldComponentTemplate
 			pathToOpenApiData={pathToOpenApiData}
 			htmlWrapperElement={htmlWrapperElement}
 			className={className}
@@ -106,5 +106,5 @@ export default function createFieldComponent(
 	)
 
 	// Return the component.
-	return Component
+	return FieldComponent
 }
