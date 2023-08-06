@@ -1,5 +1,6 @@
 // Dependencies.
-import React, { useMemo, createElement, FunctionComponent } from "react"
+import React, { useMemo, createElement, FunctionComponent, useContext } from "react"
+import { ObjectContext } from "./createObjectComponent"
 import { useOpenApiData, Oas_3_1_0_Type } from "../.."
 import get from "lodash/get"
 import { Parser, HtmlRenderer } from "commonmark"
@@ -17,11 +18,22 @@ function FieldComponentTemplate({
 	htmlWrapperElement,
 	className,
 }: FieldComponentTemplateProps) {
-	// Get the OpenAPI data.
-	const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
-	const openApiFieldData = get(openApiData, pathToOpenApiData)
+	// Declare the OpenAPI field data.
+	let openApiFieldData: any
 
-	// If there’s no OpenAPI data, return null.
+	// Get the OpenAPI object data, if it exists.
+	const openApiObjectData = useContext(ObjectContext)
+
+	// If the OpenAPI object data exists, use it.
+	if (openApiObjectData) {
+		openApiFieldData = get(openApiObjectData, pathToOpenApiData)
+	// Else, get the OpenAPI field data from the hook.
+	} else {
+		const openApiData: Oas_3_1_0_Type | null = useOpenApiData()
+		openApiFieldData = get(openApiData, pathToOpenApiData)
+	}
+
+	// If there’s no OpenAPI field data, return null.
 	if (!openApiFieldData) return null
 
 	// Define special fields.

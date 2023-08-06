@@ -1,10 +1,10 @@
 // Dependencies.
-import createOpenApiArrayOfComponents from "./utils/createArrayOfObjectsComponent"
+import createArrayOfObjects from "./utils/createArrayOfObjectsComponent"
 import createObjectComponent from "./utils/createObjectComponent"
 import createFieldComponent from "./utils/createFieldComponent"
 
 // Create parent component.
-const Server = createObjectComponent( "section" )
+const Server = createObjectComponent( "section", true )
 
 // Create child components.
 const ServerUrl = createFieldComponent( ["servers", "url"], "p" )
@@ -15,12 +15,12 @@ Server.Url = ServerUrl
 Server.Description = ServerDescription
 
 // Extend the array of components type.
-type OpenApiServersExtendedType = ReturnType<typeof createOpenApiArrayOfComponents> & {
+type OpenApiServersExtendedType = ReturnType<typeof createArrayOfObjects> & {
 	Server: typeof Server
 }
 
 // Create the array of components.
-const OpenApiServers: OpenApiServersExtendedType = createOpenApiArrayOfComponents( ["servers"], "section", Server ) as OpenApiServersExtendedType
+const OpenApiServers: OpenApiServersExtendedType = createArrayOfObjects( "section" ) as OpenApiServersExtendedType
 
 // Attach parent component to the array of components.
 OpenApiServers.Server = Server
